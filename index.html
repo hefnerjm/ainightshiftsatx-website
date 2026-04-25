@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI NightShift SATX — San Antonio Small Business Automation</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f2eb;
+    --rust: #c94f2c;
+    --rust-dark: #9e3a1e;
+    --gold: #d4a843;
+    --slate: #3a3a3a;
+    --muted: #7a7a7a;
+    --card: #ffffff;
+    --border: #e0ddd6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(245,242,235,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rust); }
+  .nav-cta {
+    background: var(--rust);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--rust-dark); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 5% 5rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%; right: -5%;
+    width: 55%;
+    height: 120%;
+    background: linear-gradient(135deg, #c94f2c14 0%, #d4a84310 50%, transparent 100%);
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem; height: 2px;
+    background: var(--rust);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 .accent { color: var(--rust); }
+  .hero h1 .line-indent { margin-left: 2rem; display: block; }
+
+  .hero-body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--slate);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--rust);
+    color: #fff;
+    padding: 0.9rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--rust-dark); transform: translateY(-1px); }
+
+  .btn-ghost {
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--rust); border-color: var(--rust); }
+
+  .hero-stat-row {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .hero-stat strong {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--rust);
+    line-height: 1;
+  }
+  .hero-stat span {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* Hero right — visual */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 0.3s forwards;
+  }
+
+  .mock-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1.2rem 1.4rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: relative;
+  }
+  .mock-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .mock-card-title {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .mock-card-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .mock-badge {
+    position: absolute;
+    top: 1rem; right: 1.2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 0.2rem 0.5rem;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+  .mock-badge.alert {
+    background: #fff3e0;
+    color: #e65100;
+  }
+  .mock-ping {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4caf50;
+    display: inline-block;
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+  }
+
+  .mock-card.featured {
+    border-left: 3px solid var(--rust);
+    transform: translateX(1.5rem);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.2rem 5%;
+    display: flex; align-items: center; gap: 3rem;
+    overflow: hidden;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .trust-bar span { white-space: nowrap; opacity: 0.6; }
+  .trust-bar strong { white-space: nowrap; }
+  .trust-sep { opacity: 0.2; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 5%; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .section-label::before {
+    content: '//';
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--slate);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .problem { background: var(--ink); color: var(--paper); }
+  .problem .section-label { color: var(--gold); }
+  .problem .section-title { color: var(--paper); }
+  .problem .section-sub { color: rgba(245,242,235,0.7); }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .problem-item {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1.8rem;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .problem-item:hover { border-color: var(--rust); }
+  .problem-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: rgba(255,255,255,0.06);
+    position: absolute;
+    top: 0.5rem; right: 1rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .problem-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--paper);
+  }
+  .problem-item p {
+    font-size: 0.85rem;
+    color: rgba(245,242,235,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── OFFERINGS ── */
+  .offerings-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 3.5rem;
+  }
+
+  .offering-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .offering-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .offering-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+  }
+  .offering-card.featured-card {
+    grid-column: span 2;
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .offering-card.featured-card .offering-tag { color: var(--gold); }
+  .offering-card.featured-card h3 { color: var(--paper); }
+  .offering-card.featured-card p { color: rgba(245,242,235,0.65); }
+
+  .offering-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--rust);
+    transition: width 0.3s;
+  }
+  .offering-card:hover::after { width: 100%; }
+  .offering-card.featured-card::after { display: none; }
+
+  .offering-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .offering-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .offering-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+  .offering-card p {
+    font-size: 0.85rem;
+    color: var(--slate);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .offering-result {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--rust);
+    font-weight: 500;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .offering-result::before { content: '→'; }
+
+  .offering-free-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: #f0ece3; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+  }
+  .step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: rgba(14,14,14,0.06);
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    line-height: 1;
+  }
+  .step-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .step h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .step p {
+    font-size: 0.84rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+  .step-connector {
+    position: absolute;
+    top: 2.5rem; right: -1.1rem;
+    width: 2.2rem; height: 2px;
+    background: var(--rust);
+    z-index: 1;
+  }
+  .step:last-child .step-connector { display: none; }
+
+  /* ── FREE OFFER ── */
+  .free-offer {
+    background: var(--rust);
+    color: #fff;
+    text-align: center;
+    padding: 5rem 5%;
+  }
+  .free-offer .section-label { color: rgba(255,255,255,0.6); justify-content: center; }
+  .free-offer .section-label::before { color: rgba(255,255,255,0.3); }
+  .free-offer .section-title { color: #fff; }
+  .free-offer .section-sub { color: rgba(255,255,255,0.8); margin: 0 auto 2.5rem; }
+
+  .btn-white {
+    background: #fff;
+    color: var(--rust);
+    padding: 1rem 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .btn-white:hover { background: var(--paper); transform: translateY(-2px); }
+
+  .free-items {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .free-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .free-item::before {
+    content: '✓';
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer .nav-logo { color: var(--paper); }
+  footer p {
+    font-size: 0.8rem;
+    color: rgba(245,242,235,0.4);
+  }
+  footer a {
+    color: rgba(245,242,235,0.5);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--rust); }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 7rem; }
+    .hero-visual { display: none; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .offerings-header { grid-template-columns: 1fr; gap: 1rem; }
+    .offering-cards { grid-template-columns: 1fr; }
+    .offering-card.featured-card { grid-column: span 1; grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+    .step-connector { display: none; }
+    .hero-stat-row { gap: 1.5rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">AI NightShift SATX</a>
+  <button onclick="openModal()" class="nav-cta">Get Your Free Audit</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">San Antonio Small Business Automation</div>
+    <h1>
+      Your Business<br>
+      <span class="accent">Keeps Working</span>
+      <span class="line-indent">After You Don't.</span>
+    </h1>
+    <p class="hero-body">
+      Every missed call after 5pm is money in your competitor's pocket.
+      We build AI-powered systems that capture leads, answer questions,
+      and follow up — so you wake up to revenue, not regrets.
+    </p>
+    <div class="hero-actions">
+      <button onclick="openModal()" class="btn-primary">Get a Free 30-Min Audit →</button>
+      <a href="#offerings" class="btn-ghost">See What We Build</a>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <strong>67%</strong>
+        <span>of leads go to the<br>first business to respond</span>
+      </div>
+      <div class="hero-stat">
+        <strong>$0</strong>
+        <span>cost to get started —<br>we prove value first</span>
+      </div>
+      <div class="hero-stat">
+        <strong>24/7</strong>
+        <span>coverage even when<br>you're on a job site</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="mock-card">
+      <div class="mock-card-label"><span class="mock-ping"></span>Live — 11:42 PM</div>
+      <div class="mock-card-title">New Lead Captured</div>
+      <div class="mock-card-sub">Maria R. asked about AC repair pricing — auto-reply sent, follow-up scheduled for 8am</div>
+      <span class="mock-badge">Responded</span>
+    </div>
+    <div class="mock-card featured">
+      <div class="mock-card-label">Missed Call Recovery</div>
+      <div class="mock-card-title">3 Voicemails → Auto-Texted Back</div>
+      <div class="mock-card-sub">All three replied within 4 minutes. 2 booked appointments.</div>
+      <span class="mock-badge">2 Booked</span>
+    </div>
+    <div class="mock-card">
+      <div class="mock-card-label">Invoice Follow-Up</div>
+      <div class="mock-card-title">Overdue: $1,240 — Reminder Sent</div>
+      <div class="mock-card-sub">Automated sequence triggered. No manual action needed.</div>
+      <span class="mock-badge alert">Pending</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <strong>Built for San Antonio businesses</strong>
+  <span class="trust-sep">|</span>
+  <span>Plumbers · HVAC · Electricians</span>
+  <span class="trust-sep">|</span>
+  <span>Contractors · Pharmacies · Salons</span>
+  <span class="trust-sep">|</span>
+  <span>Auto Shops · Clinics · Retailers</span>
+  <span class="trust-sep">|</span>
+  <strong>No tech skills required. We handle everything.</strong>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-label">The Real Cost of Manual Operations</div>
+  <h2 class="section-title">You're Losing Business<br>You Don't Even Know About</h2>
+  <p class="section-sub">You built a great business with skill and hustle. But the way customers expect to reach you has changed — and operating by hand is costing you more than you think.</p>
+
+  <div class="problem-grid">
+    <div class="problem-item fade-in">
+      <span class="problem-num">01</span>
+      <h3>Leads die after hours</h3>
+      <p>A potential customer searches at 9pm, calls you, gets voicemail, and books your competitor before you even wake up.</p>
+    </div>
+    <div class="problem-item fade-in">
+      <span class="problem-num">02</span>
+      <h3>You're the bottleneck</h3>
+      <p>Quotes, appointments, follow-ups, reminders — it all runs through you. Your business can't grow past your personal bandwidth.</p>
+    </div>
+    <div class="problem-item fade-in">
+      <span class="problem-num">03</span>
+      <h3>Admin eats your day</h3>
+      <p>Hours spent on repetitive tasks that don't require your expertise — scheduling, reminders, intake forms, review requests.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section id="offerings">
+  <div class="offerings-header">
+    <div>
+      <div class="section-label">What We Build</div>
+      <h2 class="section-title">Five Systems That<br>Run While You Sleep</h2>
+    </div>
+    <p class="section-sub">We don't sell software licenses or teach you to use tools. We build custom AI-powered systems tailored to your business — and we start for free until you see real results.</p>
+  </div>
+
+  <div class="offering-cards">
+
+    <!-- FEATURED: Lead Capture -->
+    <div class="offering-card featured-card fade-in">
+      <div>
+        <span class="offering-free-badge">⭐ Most Requested</span>
+        <span class="offering-tag">Offering 01 — Lead Capture</span>
+        <h3>24/7 AI Lead Responder</h3>
+        <p>An intelligent assistant that answers your phone line or website chat after hours, captures contact info, qualifies the lead, and either books the appointment or sends you a ready-to-close summary in the morning. No more cold leads from last night.</p>
+        <div class="offering-result" style="color: var(--gold);">Avg. 40–60% more leads converted from existing traffic</div>
+      </div>
+      <div>
+        <div class="mock-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--paper);">
+          <div class="mock-card-label" style="color: rgba(255,255,255,0.4);"><span class="mock-ping"></span>11:58 PM — Auto-Response Active</div>
+          <div class="mock-card-title" style="color: var(--paper);">"Hi! We're closed but I can help. What do you need?"</div>
+          <div class="mock-card-sub" style="color: rgba(255,255,255,0.5);">Lead captured. Appointment offered for 9am. Owner notified.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Missed Call Text-Back -->
+    <div class="offering-card fade-in">
+      <span class="offering-icon">📲</span>
+      <span class="offering-tag">Offering 02 — Missed Calls</span>
+      <h3>Instant Missed-Call Text-Back</h3>
+      <p>Every missed call automatically triggers a personalized text within 60 seconds. Customers feel acknowledged immediately and most respond before they search for a competitor.</p>
+      <div class="offering-result">Recover 30–50% of missed calls as active conversations</div>
+    </div>
+
+    <!-- Appointment + Reminder -->
+    <div class="offering-card fade-in">
+      <span class="offering-icon">📅</span>
+      <span class="offering-tag">Offering 03 — Scheduling</span>
+      <h3>Automated Booking & Reminders</h3>
+      <p>Customers book online 24/7. Automated confirmations and reminders via text reduce no-shows dramatically — no more calling around to confirm appointments manually.</p>
+      <div class="offering-result">Typical 30–50% reduction in no-shows</div>
+    </div>
+
+    <!-- Invoice Follow-Up -->
+    <div class="offering-card fade-in">
+      <span class="offering-icon">💵</span>
+      <span class="offering-tag">Offering 04 — Collections</span>
+      <h3>Invoice Follow-Up Automation</h3>
+      <p>Stop chasing payments. Automated, professional payment reminders go out on a smart sequence — friendly first, firmer later — so you get paid faster without the awkward calls.</p>
+      <div class="offering-result">Faster average payment cycles, less AR aging</div>
+    </div>
+
+    <!-- Review Generation -->
+    <div class="offering-card fade-in">
+      <span class="offering-icon">⭐</span>
+      <span class="offering-tag">Offering 05 — Reputation</span>
+      <h3>Automated Google Review Engine</h3>
+      <p>After every job or transaction, a personalized text goes out prompting happy customers to leave a Google review. More 5-star reviews means more organic leads — on autopilot.</p>
+      <div class="offering-result">3–5x more reviews in the first 90 days</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="section-label">Process</div>
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">No lengthy onboarding. No tech headaches. We handle everything — from build to launch.</p>
+
+  <div class="steps">
+    <div class="step fade-in">
+      <span class="step-num">1</span>
+      <div class="step-connector"></div>
+      <span class="step-icon">🔍</span>
+      <h3>Free 30-Min Audit</h3>
+      <p>We look at where your leads, calls, and revenue are leaking — and show you exactly what an automated system would fix. No pitch, no pressure.</p>
+    </div>
+    <div class="step fade-in">
+      <span class="step-num">2</span>
+      <div class="step-connector"></div>
+      <span class="step-icon">🔧</span>
+      <h3>We Build It Free First</h3>
+      <p>We build your first automation at no cost. You run it for 30 days and see the results. We only talk about ongoing fees once you've seen real value.</p>
+    </div>
+    <div class="step fade-in">
+      <span class="step-num">3</span>
+      <span class="step-icon">📈</span>
+      <h3>Scale What Works</h3>
+      <p>Once you see results, we stack the other systems on top. Each one compounds — your business runs smarter, not harder.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FREE OFFER / CTA -->
+<section id="contact" class="free-offer">
+  <div class="section-label">Zero Risk. Real Results.</div>
+  <h2 class="section-title">Your First Automation Is Free.<br>No Strings Attached.</h2>
+  <p class="section-sub">We're building our portfolio of San Antonio success stories. That means your first system is on us — we build it, we deploy it, you watch it work.</p>
+  <button onclick="openModal()" class="btn-white">Claim Your Free Audit →</button>
+  <div class="free-items">
+    <span class="free-item">No contracts</span>
+    <span class="free-item">No tech skills needed</span>
+    <span class="free-item">First build at zero cost</span>
+    <span class="free-item">San Antonio local</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="nav-logo">AI NightShift SATX</a>
+  <p>© 2025 AI NightShift SATX · San Antonio, TX · Built for the businesses that keep this city running.</p>
+  <div style="display:flex;gap:1.5rem">
+    <a href="mailto:info@ainightshiftsatx.com">info@ainightshiftsatx.com</a>
+    <a href="tel:+12108420614">(210) 842-0614</a>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div id="auditModal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(14,14,14,0.75);backdrop-filter:blur(4px);overflow-y:auto;">
+  <div style="background:#f5f2eb;max-width:520px;margin:4rem auto;padding:2.5rem;position:relative;border-top:4px solid #c94f2c;">
+    <button onclick="closeModal()" style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#7a7a7a;line-height:1;">×</button>
+    <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#c94f2c;margin-bottom:0.5rem;">// Free Audit Request</div>
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:0.4rem;line-height:1.1;">Let's See Where You're<br>Losing Money</h2>
+    <p style="font-size:0.85rem;color:#7a7a7a;margin-bottom:1.8rem;line-height:1.6;">Takes 60 seconds. We'll review your business and show you exactly what we'd automate — free, no pressure.</p>
+
+    <div id="formArea">
+      <div style="margin-bottom:1.2rem;">
+        <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.3rem;letter-spacing:0.03em;">Business Name *</label>
+        <input id="f_business" type="text" placeholder="e.g. ABC Plumbing" style="width:100%;padding:0.7rem 0.9rem;border:1px solid #e0ddd6;background:#fff;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;border-radius:0;" />
+      </div>
+      <div style="margin-bottom:1.2rem;">
+        <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.3rem;letter-spacing:0.03em;">Your Name *</label>
+        <input id="f_name" type="text" placeholder="First and last name" style="width:100%;padding:0.7rem 0.9rem;border:1px solid #e0ddd6;background:#fff;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;border-radius:0;" />
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem;">
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.3rem;letter-spacing:0.03em;">Phone *</label>
+          <input id="f_phone" type="tel" placeholder="(210) 555-0000" style="width:100%;padding:0.7rem 0.9rem;border:1px solid #e0ddd6;background:#fff;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;border-radius:0;" />
+        </div>
+        <div>
+          <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.3rem;letter-spacing:0.03em;">Email *</label>
+          <input id="f_email" type="email" placeholder="you@business.com" style="width:100%;padding:0.7rem 0.9rem;border:1px solid #e0ddd6;background:#fff;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;border-radius:0;" />
+        </div>
+      </div>
+      <div style="margin-bottom:1.8rem;">
+        <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.3rem;letter-spacing:0.03em;">Biggest Pain Point *</label>
+        <textarea id="f_pain" rows="3" placeholder="e.g. I miss calls after hours and lose jobs to competitors..." style="width:100%;padding:0.7rem 0.9rem;border:1px solid #e0ddd6;background:#fff;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;resize:vertical;border-radius:0;"></textarea>
+      </div>
+      <div id="formError" style="display:none;color:#c94f2c;font-size:0.8rem;margin-bottom:1rem;"></div>
+      <button onclick="submitForm()" style="width:100%;background:#c94f2c;color:#fff;border:none;padding:1rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.02em;transition:background 0.2s;">Claim My Free Audit →</button>
+      <p style="font-size:0.73rem;color:#7a7a7a;text-align:center;margin-top:0.8rem;">No contracts. No credit card. San Antonio local.</p>
+    </div>
+
+    <div id="successMsg" style="display:none;text-align:center;padding:2rem 0;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">✅</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;margin-bottom:0.5rem;">You're on the list.</h3>
+      <p style="color:#3a3a3a;font-size:0.9rem;line-height:1.6;">We'll reach out within 1 business day to schedule your free audit. Check your email for a confirmation.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Modal
+  function openModal() {
+    document.getElementById('auditModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('auditModal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('auditModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Submit to Google Forms silently
+  async function submitForm() {
+    const business = document.getElementById('f_business').value.trim();
+    const name = document.getElementById('f_name').value.trim();
+    const phone = document.getElementById('f_phone').value.trim();
+    const email = document.getElementById('f_email').value.trim();
+    const pain = document.getElementById('f_pain').value.trim();
+    const errEl = document.getElementById('formError');
+
+    if (!business || !name || !phone || !email || !pain) {
+      errEl.textContent = 'Please fill in all fields before submitting.';
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    const FORM_ID = '1FAIpQLSd3kmTgJHk7ajYMkygSpI-RoMYPSpteFwwGivaWzElPig1_Ng';
+    const url = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+    const body = new FormData();
+    body.append('entry.479608338', business);
+    body.append('entry.2056672503', name);
+    body.append('entry.1958338880', phone);
+    body.append('entry.1444672214', email);
+    body.append('entry.2143123859', pain);
+
+    try {
+      await fetch(url, { method: 'POST', body, mode: 'no-cors' });
+    } catch(e) {}
+
+    document.getElementById('formArea').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
