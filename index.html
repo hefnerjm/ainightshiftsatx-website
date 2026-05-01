@@ -835,6 +835,15 @@
         <label style="display:block;font-size:0.78rem;font-weight:600;margin-bottom:0.3rem;letter-spacing:0.03em;">Biggest Pain Point *</label>
         <textarea id="f_pain" rows="3" placeholder="e.g. I miss calls after hours and lose jobs to competitors..." style="width:100%;padding:0.7rem 0.9rem;border:1px solid #e0ddd6;background:#fff;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;resize:vertical;border-radius:0;"></textarea>
       </div>
+      <div style="margin-bottom:1.4rem;padding:1rem;background:#fff;border:1px solid #e0ddd6;">
+        <label style="display:flex;align-items:flex-start;gap:0.7rem;cursor:pointer;">
+          <input id="f_sms" type="checkbox" style="margin-top:3px;accent-color:#c94f2c;width:15px;height:15px;flex-shrink:0;" />
+          <span style="font-size:0.78rem;color:#3a3a3a;line-height:1.55;">
+            <strong style="display:block;margin-bottom:0.2rem;color:#0e0e0e;">Opt in to SMS updates (optional)</strong>
+            By checking this box, you consent to receive SMS text messages from AI NightShift SATX at the phone number provided. Messages may include appointment reminders, service updates, and business notifications. Msg &amp; data rates may apply. Reply STOP to unsubscribe, HELP for help. <a href="/sms-consent" target="_blank" style="color:#c94f2c;text-decoration:none;">View SMS Policy</a>
+          </span>
+        </label>
+      </div>
       <div id="formError" style="display:none;color:#c94f2c;font-size:0.8rem;margin-bottom:1rem;"></div>
       <button onclick="submitForm()" style="width:100%;background:#c94f2c;color:#fff;border:none;padding:1rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.02em;transition:background 0.2s;">Claim My Free Audit →</button>
       <p style="font-size:0.73rem;color:#7a7a7a;text-align:center;margin-top:0.8rem;">No contracts. No credit card. San Antonio local.</p>
@@ -879,6 +888,7 @@
     const phone = document.getElementById('f_phone').value.trim();
     const email = document.getElementById('f_email').value.trim();
     const pain = document.getElementById('f_pain').value.trim();
+    const smsOptIn = document.getElementById('f_sms').checked ? 'Yes - SMS Consent Given' : 'No SMS Consent';
     const errEl = document.getElementById('formError');
 
     if (!business || !name || !phone || !email || !pain) {
@@ -895,7 +905,7 @@
     body.append('entry.2056672503', name);
     body.append('entry.1958338880', phone);
     body.append('entry.1444672214', email);
-    body.append('entry.2143123859', pain);
+    body.append('entry.2143123859', `${pain} [SMS Opt-In: ${smsOptIn}]`);
 
     try {
       await fetch(url, { method: 'POST', body, mode: 'no-cors' });
