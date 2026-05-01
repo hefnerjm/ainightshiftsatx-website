@@ -905,7 +905,8 @@
     body.append('entry.2056672503', name);
     body.append('entry.1958338880', phone);
     body.append('entry.1444672214', email);
-    body.append('entry.2143123859', `${pain} [SMS Opt-In: ${smsOptIn}]`);
+    body.append('entry.2143123859', pain);
+    body.append('entry.1892528758', smsOptIn);
 
     try {
       await fetch(url, { method: 'POST', body, mode: 'no-cors' });
