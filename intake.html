@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Client Intake — AI NightShift SATX</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f2eb;
+    --rust: #c94f2c;
+    --rust-dark: #9e3a1e;
+    --gold: #d4a843;
+    --slate: #3a3a3a;
+    --muted: #7a7a7a;
+    --card: #ffffff;
+    --border: #e0ddd6;
+    --error: #b53e1f;
+    --success: #2f6b3a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(245,242,235,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rust); }
+  .nav-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem; height: 2px;
+    background: var(--rust);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+  .lead {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--slate);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── FORM ── */
+  fieldset {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.8rem 1.6rem 1.2rem;
+    margin-bottom: 1.4rem;
+  }
+  legend {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    padding: 0 0.6rem;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  legend .num {
+    color: var(--rust);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .row.three { grid-template-columns: 1fr 1fr 1fr; }
+  @media (max-width: 640px) {
+    .row, .row.three { grid-template-columns: 1fr; }
+  }
+
+  .field { margin-bottom: 1rem; }
+  .field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--slate);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+  .field label .req { color: var(--rust); margin-left: 0.2rem; }
+  .field .hint {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    line-height: 1.4;
+  }
+
+  input[type="text"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.15s;
+  }
+  textarea { resize: vertical; min-height: 4.2rem; line-height: 1.5; }
+  input:focus, select:focus, textarea:focus { border-color: var(--rust); }
+  input:invalid:not(:placeholder-shown), select:invalid, textarea:invalid:not(:placeholder-shown) {
+    border-color: var(--error);
+  }
+
+  .client-picker {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.4rem;
+  }
+  .client-picker h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.9rem;
+  }
+  .mode-toggle {
+    display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .mode-toggle label {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .mode-toggle input[type="radio"] { accent-color: var(--rust); }
+  .mode-toggle label:has(input:checked) {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .submit-row {
+    display: flex; gap: 1rem; align-items: center;
+    margin-top: 2rem; flex-wrap: wrap;
+  }
+  button.primary {
+    background: var(--rust);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button.primary:hover:not(:disabled) { background: var(--rust-dark); }
+  button.primary:disabled { background: var(--muted); cursor: wait; }
+  button.ghost {
+    background: transparent;
+    color: var(--slate);
+    border: 1px solid var(--border);
+    padding: 0.9rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  button.ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+  .status {
+    margin-top: 1.5rem;
+    padding: 1.1rem 1.3rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .status.success { border-color: var(--success); border-left: 4px solid var(--success); }
+  .status.error   { border-color: var(--error);   border-left: 4px solid var(--error); }
+  .status h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .status code, .mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    background: var(--paper);
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--border);
+  }
+  .status ul { margin-top: 0.6rem; padding-left: 1.4rem; }
+  .status .vps-warn { color: var(--muted); margin-top: 0.6rem; font-size: 0.85rem; }
+
+  .draft-indicator {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-left: auto;
+    letter-spacing: 0.05em;
+  }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">AI NIGHT<span>SHIFT</span> SATX</a>
+  <div class="nav-right">Council Intake</div>
+</nav>
+
+<main>
+  <div class="eyebrow">Project Brief</div>
+  <h1>New client intake</h1>
+  <p class="lead">
+    Capture a Project Brief and send it to the council. Submission writes
+    to the council repo and triggers the VPS listener. All required fields
+    feed Ethics, Security, and QA agents — don't skip them.
+  </p>
+
+  <form id="intake" novalidate>
+
+    <!-- ── Client picker ── -->
+    <div class="client-picker">
+      <h2>Client</h2>
+      <div class="mode-toggle">
+        <label><input type="radio" name="client_mode" value="existing" checked> Existing client</label>
+        <label><input type="radio" name="client_mode" value="new"> + New client</label>
+      </div>
+
+      <div id="existing-client-block" class="field">
+        <label for="existing_slug">Select a client</label>
+        <select id="existing_slug" name="existing_slug">
+          <option value="">— loading… —</option>
+        </select>
+      </div>
+
+      <div id="new-client-block" class="hidden">
+        <div class="row">
+          <div class="field">
+            <label for="client_name_new">Client name <span class="req">*</span></label>
+            <input type="text" id="client_name_new" placeholder="e.g. 365 Pool &amp; Spa" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="client_slug">Client slug <span class="req">*</span></label>
+            <input type="text" id="client_slug" placeholder="365_pool_and_spa" autocomplete="off" pattern="^[a-z0-9_]{1,64}$">
+            <span class="hint">Lowercase, digits, underscores. Auto-derived from name; edit if needed.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 1. Project Identity ── -->
+    <fieldset>
+      <legend><span class="num">01</span>Project Identity</legend>
+      <div class="row">
+        <div class="field">
+          <label for="project_name">Project name <span class="req">*</span></label>
+          <input type="text" id="project_name" name="project_name" required>
+        </div>
+        <div class="field">
+          <label for="industry">Industry <span class="req">*</span></label>
+          <input type="text" id="industry" name="industry" placeholder="e.g. residential services" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="client_name">Client name (display) <span class="req">*</span></label>
+          <input type="text" id="client_name" name="client_name" required>
+          <span class="hint">May differ from the slug above (e.g. "365 Pool &amp; Spa" vs <span class="mono">365_pool_and_spa</span>).</span>
+        </div>
+        <div class="field">
+          <label for="project_type">Type <span class="req">*</span></label>
+          <select id="project_type" name="project_type" required>
+            <option value="">— choose —</option>
+            <option value="new_agent">new_agent</option>
+            <option value="client_automation">client_automation</option>
+            <option value="internal_tool">internal_tool</option>
+            <option value="strategic_decision">strategic_decision</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ── 2. The Problem ── -->
+    <fieldset>
+      <legend><span class="num">02</span>The Problem</legend>
+      <div class="field">
+        <label for="problem_description">Description <span class="req">*</span></label>
+        <textarea id="problem_description" name="problem_description" rows="3" required></textarea>
+        <span class="hint">What specific problem is the client experiencing?</span>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="problem_frequency">Frequency</label>
+          <input type="text" id="problem_frequency" name="problem_frequency" placeholder="e.g. daily, weekly, weekends only">
+        </div>
+        <div class="field">
+          <label for="problem_cost">Current cost</label>
+          <input type="text" id="problem_cost" name="problem_cost" placeholder="time, money, lost customers">
+        </div>
+      </div>
+      <div class="field">
+        <label for="problem_current_solution">Current solution</label>
+        <input type="text" id="problem_current_solution" name="problem_current_solution" placeholder="nothing, manual process, existing tool">
+      </div>
+    </fieldset>
+
+    <!-- ── 3. The Proposed Solution ── -->
+    <fieldset>
+      <legend><span class="num">03</span>Proposed Solution</legend>
+      <div class="field">
+        <label for="solution_what_it_does">What it does <span class="req">*</span></label>
+        <textarea id="solution_what_it_does" name="solution_what_it_does" rows="3" required></textarea>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="solution_trigger">Trigger</label>
+          <input type="text" id="solution_trigger" name="solution_trigger" placeholder="what kicks it off">
+        </div>
+        <div class="field">
+          <label for="solution_action">Action</label>
+          <input type="text" id="solution_action" name="solution_action" placeholder="what it does when triggered">
+        </div>
+      </div>
+      <div class="field">
+        <label for="solution_output">Expected output</label>
+        <input type="text" id="solution_output" name="solution_output">
+      </div>
+    </fieldset>
+
+    <!-- ── 4. People & Data ── -->
+    <fieldset>
+      <legend><span class="num">04</span>People &amp; Data</legend>
+      <div class="row">
+        <div class="field">
+          <label for="people_users">Users</label>
+          <input type="text" id="people_users" name="people_users" placeholder="staff, customers, both">
+        </div>
+        <div class="field">
+          <label for="people_data">Data touched</label>
+          <input type="text" id="people_data" name="people_data" placeholder="names, phones, payment, health">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="people_sensitive_data">Sensitive data</label>
+          <input type="text" id="people_sensitive_data" name="people_sensitive_data" placeholder="health, financial, minors, legal">
+        </div>
+        <div class="field">
+          <label for="people_regulated">Regulated industry</label>
+          <select id="people_regulated" name="people_regulated">
+            <option value="">— choose —</option>
+            <option value="No">No</option>
+            <option value="Yes — HIPAA">Yes — HIPAA</option>
+            <option value="Yes — PCI">Yes — PCI</option>
+            <option value="Yes — other">Yes — other</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ── 5. Technical Context ── -->
+    <fieldset>
+      <legend><span class="num">05</span>Technical Context</legend>
+      <div class="row">
+        <div class="field">
+          <label for="tech_existing_tools">Existing tools</label>
+          <input type="text" id="tech_existing_tools" name="tech_existing_tools" placeholder="Twilio, HubSpot, Anthropic API">
+        </div>
+        <div class="field">
+          <label for="tech_deployment">Deployment target</label>
+          <input type="text" id="tech_deployment" name="tech_deployment" placeholder="Railway, VPS, client system">
+        </div>
+      </div>
+      <div class="field">
+        <label for="tech_integrations">Integrations</label>
+        <input type="text" id="tech_integrations" name="tech_integrations" placeholder="CRM, calendar, POS, webhooks">
+      </div>
+      <div class="field">
+        <label for="tech_constraints">Constraints</label>
+        <input type="text" id="tech_constraints" name="tech_constraints" placeholder="concurrency, latency, message persistence">
+      </div>
+    </fieldset>
+
+    <!-- ── 6. Success & Timeline ── -->
+    <fieldset>
+      <legend><span class="num">06</span>Success &amp; Timeline</legend>
+      <div class="field">
+        <label for="success_metric">Success metric</label>
+        <input type="text" id="success_metric" name="success_metric">
+        <span class="hint">If the operator can't name one, flag it — unmeasurable success is a project risk.</span>
+      </div>
+      <div class="row three">
+        <div class="field">
+          <label for="success_decision_maker">Decision maker</label>
+          <input type="text" id="success_decision_maker" name="success_decision_maker">
+        </div>
+        <div class="field">
+          <label for="success_timeline">Go-live target</label>
+          <input type="text" id="success_timeline" name="success_timeline" placeholder="e.g. 2 weeks">
+        </div>
+        <div class="field">
+          <label for="success_engagement_type">Engagement type</label>
+          <select id="success_engagement_type" name="success_engagement_type">
+            <option value="">— choose —</option>
+            <option value="Free first build">Free first build</option>
+            <option value="Paid build">Paid build</option>
+            <option value="Retainer">Retainer</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- ── 7. Known Risks ── -->
+    <fieldset>
+      <legend><span class="num">07</span>Known Risks</legend>
+      <div class="field">
+        <label for="risks_identified">Identified risks</label>
+        <textarea id="risks_identified" name="risks_identified" rows="2"></textarea>
+      </div>
+      <div class="field">
+        <label for="risks_concerns">Operator concerns</label>
+        <textarea id="risks_concerns" name="risks_concerns" rows="2"></textarea>
+      </div>
+      <div class="field">
+        <label for="risks_regulatory">Regulatory flags</label>
+        <input type="text" id="risks_regulatory" name="risks_regulatory" placeholder="TCPA, HIPAA, GDPR, none">
+      </div>
+    </fieldset>
+
+    <div class="submit-row">
+      <button type="submit" class="primary" id="submit-btn">Send to council →</button>
+      <button type="button" class="ghost" id="clear-btn">Clear draft</button>
+      <span class="draft-indicator" id="draft-indicator"></span>
+    </div>
+
+    <div id="status" class="status hidden"></div>
+  </form>
+</main>
+
+<script>
+(() => {
+  const FIELDS = [
+    "project_name","client_name","industry","project_type",
+    "problem_description","problem_frequency","problem_cost","problem_current_solution",
+    "solution_what_it_does","solution_trigger","solution_action","solution_output",
+    "people_users","people_data","people_sensitive_data","people_regulated",
+    "tech_existing_tools","tech_deployment","tech_integrations","tech_constraints",
+    "success_metric","success_decision_maker","success_timeline","success_engagement_type",
+    "risks_identified","risks_concerns","risks_regulatory",
+  ];
+  const REQUIRED = [
+    "client_slug","project_name","client_name","industry","project_type",
+    "problem_description","solution_what_it_does",
+  ];
+  const DRAFT_KEY = "intake_draft_v1";
+  const SLUG_RE = /^[a-z0-9_]{1,64}$/;
+
+  const form = document.getElementById("intake");
+  const statusEl = document.getElementById("status");
+  const submitBtn = document.getElementById("submit-btn");
+  const clearBtn = document.getElementById("clear-btn");
+  const draftIndicator = document.getElementById("draft-indicator");
+  const existingBlock = document.getElementById("existing-client-block");
+  const newBlock = document.getElementById("new-client-block");
+  const existingSelect = document.getElementById("existing_slug");
+  const clientNameNew = document.getElementById("client_name_new");
+  const clientSlug = document.getElementById("client_slug");
+  const clientName = document.getElementById("client_name");
+  const modeRadios = form.querySelectorAll("input[name=client_mode]");
+
+  function deriveSlug(s) {
+    return (s || "")
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 64);
+  }
+
+  function currentMode() {
+    return form.querySelector("input[name=client_mode]:checked").value;
+  }
+
+  function applyMode() {
+    if (currentMode() === "existing") {
+      existingBlock.classList.remove("hidden");
+      newBlock.classList.add("hidden");
+    } else {
+      existingBlock.classList.add("hidden");
+      newBlock.classList.remove("hidden");
+    }
+  }
+
+  modeRadios.forEach(r => r.addEventListener("change", applyMode));
+
+  // Auto-derive slug from client name in "new client" mode (until user edits it).
+  let slugManuallyEdited = false;
+  clientSlug.addEventListener("input", () => { slugManuallyEdited = true; });
+  clientNameNew.addEventListener("input", () => {
+    if (!slugManuallyEdited) clientSlug.value = deriveSlug(clientNameNew.value);
+    // Also mirror to the display client_name field if not edited.
+    if (!clientName.value || clientName.value === clientName.dataset.lastAuto) {
+      clientName.value = clientNameNew.value;
+      clientName.dataset.lastAuto = clientNameNew.value;
+    }
+  });
+
+  // ── Load existing clients
+  async function loadClients() {
+    try {
+      const r = await fetch("/api/clients", { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const j = await r.json();
+      existingSelect.innerHTML = "";
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = j.clients.length
+        ? "— choose existing client —"
+        : "— no clients yet, switch to + New client —";
+      existingSelect.appendChild(placeholder);
+      for (const slug of j.clients) {
+        const opt = document.createElement("option");
+        opt.value = slug;
+        opt.textContent = slug;
+        existingSelect.appendChild(opt);
+      }
+    } catch (e) {
+      existingSelect.innerHTML = "";
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "— could not load (use + New client) —";
+      existingSelect.appendChild(opt);
+    }
+  }
+
+  // ── Draft persistence
+  function snapshot() {
+    const out = { _mode: currentMode(), _slug: clientSlug.value, _client_name_new: clientNameNew.value, _existing_slug: existingSelect.value };
+    for (const f of FIELDS) {
+      const el = document.getElementById(f);
+      if (el) out[f] = el.value;
+    }
+    return out;
+  }
+
+  function restoreDraft() {
+    let saved;
+    try { saved = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null"); } catch { saved = null; }
+    if (!saved) return;
+    if (saved._mode === "new") {
+      form.querySelector("input[name=client_mode][value=new]").checked = true;
+      applyMode();
+      if (saved._client_name_new) clientNameNew.value = saved._client_name_new;
+      if (saved._slug) { clientSlug.value = saved._slug; slugManuallyEdited = true; }
+    } else if (saved._existing_slug) {
+      // Re-select after the dropdown finishes loading.
+      const tries = [50, 200, 500, 1000];
+      tries.forEach((d) => setTimeout(() => { existingSelect.value = saved._existing_slug; }, d));
+    }
+    for (const f of FIELDS) {
+      const el = document.getElementById(f);
+      if (el && saved[f] != null) el.value = saved[f];
+    }
+    draftIndicator.textContent = "draft restored";
+  }
+
+  let saveTimer;
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      try {
+        localStorage.setItem(DRAFT_KEY, JSON.stringify(snapshot()));
+        draftIndicator.textContent = "draft saved";
+        setTimeout(() => {
+          if (draftIndicator.textContent === "draft saved") draftIndicator.textContent = "";
+        }, 1500);
+      } catch {}
+    }, 400);
+  }
+
+  form.addEventListener("input", scheduleSave);
+  form.addEventListener("change", scheduleSave);
+
+  clearBtn.addEventListener("click", () => {
+    if (!confirm("Clear all fields and discard saved draft?")) return;
+    localStorage.removeItem(DRAFT_KEY);
+    form.reset();
+    slugManuallyEdited = false;
+    clientName.dataset.lastAuto = "";
+    applyMode();
+    statusEl.classList.add("hidden");
+    draftIndicator.textContent = "";
+  });
+
+  // ── Submit
+  function gatherPayload() {
+    const payload = {};
+    for (const f of FIELDS) {
+      const el = document.getElementById(f);
+      if (el) payload[f] = el.value.trim();
+    }
+    if (currentMode() === "existing") {
+      const slug = existingSelect.value;
+      payload.client_slug = slug;
+      if (!payload.client_name) payload.client_name = slug;
+    } else {
+      payload.client_slug = clientSlug.value.trim();
+      if (!payload.client_name) payload.client_name = clientNameNew.value.trim();
+    }
+    return payload;
+  }
+
+  function clientSideValidate(payload) {
+    const errs = [];
+    if (!payload.client_slug) errs.push("client_slug is required");
+    else if (!SLUG_RE.test(payload.client_slug)) errs.push("client_slug must match ^[a-z0-9_]{1,64}$");
+    for (const f of REQUIRED) {
+      if (f === "client_slug") continue;
+      if (!payload[f]) errs.push(`missing required field: ${f}`);
+    }
+    return errs;
+  }
+
+  function showStatus(cls, html) {
+    statusEl.className = "status " + cls;
+    statusEl.innerHTML = html;
+    statusEl.classList.remove("hidden");
+    statusEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    statusEl.classList.add("hidden");
+
+    const payload = gatherPayload();
+    const errs = clientSideValidate(payload);
+    if (errs.length) {
+      showStatus("error",
+        `<h3>Fix these before submitting</h3><ul>${errs.map(e => `<li>${escapeHtml(e)}</li>`).join("")}</ul>`);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const origLabel = submitBtn.textContent;
+    submitBtn.textContent = "Sending…";
+
+    try {
+      const r = await fetch("/api/intake", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const j = await r.json().catch(() => ({ error: "no JSON in response" }));
+
+      if (r.ok && j.status === "ok") {
+        const ghLink = `https://github.com/hefnerjm/ainightshift-council/blob/main/${j.path}`;
+        const vpsLine = j.vps && j.vps.ok
+          ? "VPS webhook acknowledged."
+          : `VPS webhook did not respond (${escapeHtml(j.vps?.error || "unknown")}). The brief is safely in GitHub; next git pull will sync it.`;
+        showStatus("success",
+          `<h3>Brief sent to the council</h3>
+           <div>Path: <code>${escapeHtml(j.path)}</code></div>
+           <div style="margin-top:0.5rem"><a href="${ghLink}" target="_blank" rel="noopener">View on GitHub →</a></div>
+           <div class="vps-warn">${vpsLine}</div>`);
+        localStorage.removeItem(DRAFT_KEY);
+        draftIndicator.textContent = "";
+        // Don't auto-reset — operator may want to copy info or submit a similar brief.
+      } else {
+        const details = Array.isArray(j.details) ? j.details : [];
+        showStatus("error",
+          `<h3>Submission failed</h3>
+           <div>${escapeHtml(j.error || ("HTTP " + r.status))}</div>
+           ${details.length ? `<ul>${details.map(d => `<li>${escapeHtml(d)}</li>`).join("")}</ul>` : ""}`);
+      }
+    } catch (e) {
+      showStatus("error",
+        `<h3>Network error</h3><div>${escapeHtml(e.message || String(e))}</div>
+         <div class="vps-warn">Your draft is still saved in this browser. Try again in a moment.</div>`);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = origLabel;
+    }
+  });
+
+  // ── Boot
+  applyMode();
+  loadClients().then(restoreDraft);
+})();
+</script>
+</body>
+</html>

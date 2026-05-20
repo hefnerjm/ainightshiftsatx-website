@@ -16,8 +16,10 @@
 - Secrets stored in Cloudflare Workers environment variables, never in code
 
 ## Intake Form Context
-- Page: /intake (protected via Cloudflare Access, OTP to hefnerjm@gmail.com)
-- Form submits structured JSON to POST /api/intake (Pages Function)
+- Page: /intake → served by intake.html (protected via Cloudflare Access, OTP to hefnerjm@gmail.com)
+- Form: vanilla HTML/CSS/JS, 7 fieldsets matching the Project Brief template, draft autosaved to localStorage under "intake_draft_v1"
+- Client picker: dropdown of existing slugs (loaded from /api/clients) or "+ New client" with auto-derived slug
+- Submits structured JSON to POST /api/intake (Pages Function)
 - POST /api/intake:
   1. Renders brief template from form fields (functions/api/_lib/brief.js)
   2. Writes to ainightshift-council via GitHub Contents API at intake/clients/[slug]/[YYYYMMDD_HHMMSS]_brief.txt (canonical)
