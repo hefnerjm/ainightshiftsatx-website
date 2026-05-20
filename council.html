@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Council — AI NightShift SATX</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --paper: #f5f2eb;
+    --rust: #c94f2c;
+    --rust-dark: #9e3a1e;
+    --gold: #d4a843;
+    --slate: #3a3a3a;
+    --muted: #7a7a7a;
+    --card: #ffffff;
+    --border: #e0ddd6;
+    --go: #2f6b3a;
+    --nogo: #b53e1f;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav.top {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(245,242,235,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rust); }
+  .nav-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem; height: 2px;
+    background: var(--rust);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+    margin: 2rem 0 1rem;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    letter-spacing: 0.03em;
+  }
+  .breadcrumb a {
+    color: var(--slate);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  .breadcrumb a:hover { color: var(--rust); border-bottom-color: var(--rust); }
+  .breadcrumb .sep { margin: 0 0.5rem; color: var(--border); }
+
+  /* ── CLIENT CARDS ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.3rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.1s;
+    display: block;
+  }
+  .card:hover { border-color: var(--rust); transform: translateY(-1px); }
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+  .card-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SESSION LIST ── */
+  .session-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.3rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    margin-bottom: 0.6rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s;
+  }
+  .session-row:hover { border-color: var(--rust); }
+  .session-ts {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .session-date {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ── BADGES ── */
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.7rem;
+    text-transform: uppercase;
+    border: 1px solid;
+    flex-shrink: 0;
+  }
+  .badge.go      { color: var(--go);   border-color: var(--go);   background: #f0f6f1; }
+  .badge.nogo    { color: var(--nogo); border-color: var(--nogo); background: #fbf0ec; }
+  .badge.unknown { color: var(--muted); border-color: var(--border); background: var(--paper); }
+  .badge.pending { color: var(--gold); border-color: var(--gold); background: #fdf7e6; }
+
+  /* ── SESSION DETAIL ── */
+  .session-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.5rem; flex-wrap: wrap;
+  }
+  .session-header .ts {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.1rem;
+    color: var(--slate);
+  }
+
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .panel.recommendation {
+    border-left: 4px solid var(--rust);
+  }
+  .panel-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    padding: 1rem 1.3rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem;
+  }
+  .panel-body {
+    padding: 1.3rem;
+  }
+  .panel-body pre {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--ink);
+  }
+
+  details.collapsible {
+    background: var(--card);
+    border: 1px solid var(--border);
+    margin-bottom: 0.6rem;
+  }
+  details.collapsible[open] { border-color: var(--slate); }
+  details.collapsible > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.95rem 1.3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem;
+    user-select: none;
+  }
+  details.collapsible > summary::-webkit-details-marker { display: none; }
+  details.collapsible > summary::after {
+    content: '+';
+    font-family: 'DM Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  details.collapsible[open] > summary::after { content: '−'; color: var(--rust); }
+  .summary-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+  }
+  .summary-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-left: auto;
+    margin-right: 0.8rem;
+  }
+  details.collapsible > .panel-body {
+    border-top: 1px solid var(--border);
+  }
+
+  /* version pills inside a specialist panel */
+  .version-tabs {
+    display: flex; gap: 0.4rem; margin-bottom: 0.8rem; flex-wrap: wrap;
+  }
+  .version-tab {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .version-tab.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ── STATUS / MESSAGES ── */
+  .status {
+    padding: 1.1rem 1.3rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .status.error { border-left: 4px solid var(--nogo); }
+  .status.info  { border-left: 4px solid var(--gold); }
+  .status code, .mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+  }
+  .empty {
+    padding: 2.5rem 1.3rem;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .loading {
+    display: inline-block;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .loading::after {
+    content: '';
+    display: inline-block;
+    width: 0; margin-left: 0.3rem;
+    animation: dots 1s steps(4, end) infinite;
+  }
+  @keyframes dots { 0%,20%{content:''} 40%{content:'.'} 60%{content:'..'} 80%,100%{content:'...'} }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="/" class="nav-logo">AI NIGHT<span>SHIFT</span> SATX</a>
+  <div class="nav-right">Council Viewer</div>
+</nav>
+
+<main>
+  <div class="eyebrow">Council Sessions</div>
+  <h1 id="page-title">Council</h1>
+  <nav class="breadcrumb" id="breadcrumb"></nav>
+
+  <div id="status-area"></div>
+  <div id="view"><div class="loading">loading</div></div>
+</main>
+
+<script>
+(() => {
+  // ── State ──────────────────────────────────────────────────────────────
+  let GITHUB_TOKEN = null;
+  let GITHUB_REPO = null;
+
+  const view = document.getElementById("view");
+  const breadcrumb = document.getElementById("breadcrumb");
+  const pageTitle = document.getElementById("page-title");
+  const statusArea = document.getElementById("status-area");
+
+  // ── Helpers ────────────────────────────────────────────────────────────
+  function escapeHtml(s) {
+    return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  function showStatus(cls, html) {
+    statusArea.innerHTML = `<div class="status ${cls}">${html}</div>`;
+  }
+  function clearStatus() { statusArea.innerHTML = ""; }
+
+  function formatTimestamp(ts) {
+    // 20260520_120000 → 2026-05-20 12:00:00
+    const m = ts.match(/^(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})$/);
+    if (!m) return ts;
+    return `${m[1]}-${m[2]}-${m[3]} ${m[4]}:${m[5]}:${m[6]}`;
+  }
+
+  // GitHub Contents API
+  async function ghList(path) {
+    const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+    const r = await fetch(url, {
+      headers: {
+        "Authorization": `Bearer ${GITHUB_TOKEN}`,
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+      cache: "no-store",
+    });
+    if (r.status === 404) return [];
+    if (!r.ok) throw new Error(`GitHub ${r.status} on ${path}: ${(await r.text()).slice(0, 200)}`);
+    const j = await r.json();
+    if (!Array.isArray(j)) throw new Error(`Expected directory listing at ${path}`);
+    return j;
+  }
+
+  async function ghRaw(path) {
+    const url = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+    const r = await fetch(url, {
+      headers: {
+        "Authorization": `Bearer ${GITHUB_TOKEN}`,
+        "Accept": "application/vnd.github.raw",
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+      cache: "no-store",
+    });
+    if (r.status === 404) return null;
+    if (!r.ok) throw new Error(`GitHub ${r.status} on ${path}: ${(await r.text()).slice(0, 200)}`);
+    return r.text();
+  }
+
+  // ── Auth bootstrap ─────────────────────────────────────────────────────
+  async function loadToken() {
+    const r = await fetch("/api/auth/token", { cache: "no-store" });
+    if (!r.ok) {
+      const text = await r.text().catch(() => "");
+      throw new Error(`/api/auth/token returned ${r.status}: ${text.slice(0, 200)}`);
+    }
+    const j = await r.json();
+    if (!j.token) throw new Error("Token endpoint returned no token");
+    GITHUB_TOKEN = j.token;
+    GITHUB_REPO = j.repo;
+  }
+
+  // ── Recommendation parsing ─────────────────────────────────────────────
+  function detectVerdict(text) {
+    if (!text) return "unknown";
+    // Match "RECOMMENDATION: GO" / "RECOMMENDATION: NO-GO" with optional whitespace.
+    const m = text.match(/RECOMMENDATION\s*:\s*(NO-?GO|GO)\b/i);
+    if (!m) return "unknown";
+    return /no-?go/i.test(m[1]) ? "nogo" : "go";
+  }
+
+  function badgeFor(verdict) {
+    const labels = { go: "GO", nogo: "NO-GO", unknown: "?", pending: "…" };
+    return `<span class="badge ${verdict}">${labels[verdict] || "?"}</span>`;
+  }
+
+  // ── File categorization ────────────────────────────────────────────────
+  function categorizeFiles(files) {
+    const recommendation = files.find(f => f.name === "COUNCIL_RECOMMENDATION.txt") || null;
+    const specialists = {};
+    const qa = {};
+    for (const f of files) {
+      let m = f.name.match(/^([a-z_]+)_v(\d+)\.txt$/);
+      if (m) {
+        (specialists[m[1]] ||= []).push({ v: Number(m[2]), file: f });
+        continue;
+      }
+      m = f.name.match(/^qa_cycle(\d+)_instance(\d+)\.txt$/);
+      if (m) {
+        const key = `cycle${m[1]}`;
+        (qa[key] ||= []).push({ instance: Number(m[2]), file: f });
+      }
+    }
+    for (const k in specialists) specialists[k].sort((a, b) => a.v - b.v);
+    for (const k in qa) qa[k].sort((a, b) => a.instance - b.instance);
+    return { recommendation, specialists, qa };
+  }
+
+  // ── Router ─────────────────────────────────────────────────────────────
+  function parseRoute() {
+    const h = location.hash.replace(/^#/, "") || "/";
+    // /, /c/<slug>, /c/<slug>/s/<ts>
+    let m = h.match(/^\/c\/([a-z0-9_]+)\/s\/(\d{8}_\d{6})\/?$/);
+    if (m) return { view: "session", slug: m[1], ts: m[2] };
+    m = h.match(/^\/c\/([a-z0-9_]+)\/?$/);
+    if (m) return { view: "sessions", slug: m[1] };
+    return { view: "clients" };
+  }
+
+  function renderBreadcrumb(route) {
+    const crumbs = [`<a href="#/">Council</a>`];
+    if (route.view === "sessions" || route.view === "session") {
+      crumbs.push(`<a href="#/c/${encodeURIComponent(route.slug)}">${escapeHtml(route.slug)}</a>`);
+    }
+    if (route.view === "session") {
+      crumbs.push(`<span>${escapeHtml(formatTimestamp(route.ts))}</span>`);
+    }
+    breadcrumb.innerHTML = crumbs.join(`<span class="sep">/</span>`);
+  }
+
+  // ── Views ──────────────────────────────────────────────────────────────
+  async function showClients() {
+    pageTitle.textContent = "Clients";
+    view.innerHTML = `<div class="loading">loading clients</div>`;
+    clearStatus();
+    let entries;
+    try {
+      entries = await ghList("outputs/clients");
+    } catch (e) {
+      showStatus("error", `<strong>Could not load clients.</strong> ${escapeHtml(e.message)}`);
+      view.innerHTML = "";
+      return;
+    }
+    const clients = entries.filter(e => e.type === "dir").map(e => e.name).sort();
+    if (!clients.length) {
+      view.innerHTML = `<div class="empty">No council sessions yet. Run <span class="mono">run_council.py --client &lt;slug&gt;</span> to create the first one.</div>`;
+      return;
+    }
+    // Render skeleton, then fill in per-client session count in parallel.
+    view.innerHTML = `<div class="grid">${
+      clients.map(slug => `
+        <a class="card" href="#/c/${encodeURIComponent(slug)}" data-slug="${escapeHtml(slug)}">
+          <div class="card-title">${escapeHtml(slug)}</div>
+          <div class="card-meta" data-role="meta"><span class="loading">counting</span></div>
+        </a>`).join("")
+    }</div>`;
+    await Promise.all(clients.map(async (slug) => {
+      try {
+        const sessions = (await ghList(`outputs/clients/${slug}`)).filter(e => e.type === "dir");
+        const meta = view.querySelector(`[data-slug="${CSS.escape(slug)}"] [data-role="meta"]`);
+        if (!meta) return;
+        const latest = sessions.map(s => s.name).sort().pop();
+        meta.innerHTML = `${sessions.length} session${sessions.length === 1 ? "" : "s"}` +
+          (latest ? ` · last <span class="mono">${escapeHtml(formatTimestamp(latest))}</span>` : "");
+      } catch (e) {
+        const meta = view.querySelector(`[data-slug="${CSS.escape(slug)}"] [data-role="meta"]`);
+        if (meta) meta.textContent = "(could not count sessions)";
+      }
+    }));
+  }
+
+  async function showSessions(slug) {
+    pageTitle.textContent = slug;
+    view.innerHTML = `<div class="loading">loading sessions</div>`;
+    clearStatus();
+    let entries;
+    try {
+      entries = await ghList(`outputs/clients/${slug}`);
+    } catch (e) {
+      showStatus("error", `<strong>Could not load sessions.</strong> ${escapeHtml(e.message)}`);
+      view.innerHTML = "";
+      return;
+    }
+    const sessions = entries.filter(e => e.type === "dir").map(e => e.name).sort().reverse();
+    if (!sessions.length) {
+      view.innerHTML = `<div class="empty">No sessions found for <span class="mono">${escapeHtml(slug)}</span>.</div>`;
+      return;
+    }
+    view.innerHTML = sessions.map(ts => `
+      <a class="session-row" href="#/c/${encodeURIComponent(slug)}/s/${ts}" data-ts="${ts}">
+        <div>
+          <div class="session-ts">${escapeHtml(ts)}</div>
+          <div class="session-date">${escapeHtml(formatTimestamp(ts))}</div>
+        </div>
+        <span data-role="badge">${badgeFor("pending")}</span>
+      </a>
+    `).join("");
+
+    // Resolve verdicts in parallel
+    await Promise.all(sessions.map(async (ts) => {
+      let verdict = "unknown";
+      try {
+        const text = await ghRaw(`outputs/clients/${slug}/${ts}/COUNCIL_RECOMMENDATION.txt`);
+        verdict = detectVerdict(text);
+      } catch {
+        verdict = "unknown";
+      }
+      const slot = view.querySelector(`[data-ts="${CSS.escape(ts)}"] [data-role="badge"]`);
+      if (slot) slot.innerHTML = badgeFor(verdict);
+    }));
+  }
+
+  async function showSession(slug, ts) {
+    pageTitle.textContent = `${slug}`;
+    view.innerHTML = `<div class="loading">loading session</div>`;
+    clearStatus();
+    let entries;
+    try {
+      entries = await ghList(`outputs/clients/${slug}/${ts}`);
+    } catch (e) {
+      showStatus("error", `<strong>Could not load session.</strong> ${escapeHtml(e.message)}`);
+      view.innerHTML = "";
+      return;
+    }
+    const files = entries.filter(e => e.type === "file");
+    if (!files.length) {
+      view.innerHTML = `<div class="empty">No files in this session.</div>`;
+      return;
+    }
+    const { recommendation, specialists, qa } = categorizeFiles(files);
+
+    // Header skeleton
+    view.innerHTML = `
+      <div class="session-header">
+        <span class="ts">${escapeHtml(formatTimestamp(ts))}</span>
+        <span data-role="verdict-badge">${badgeFor("pending")}</span>
+      </div>
+      <div data-role="recommendation"></div>
+      ${Object.keys(specialists).length ? `<h2>Specialist outputs</h2><div data-role="specialists"></div>` : ""}
+      ${Object.keys(qa).length          ? `<h2>QA cycles</h2><div data-role="qa"></div>` : ""}
+    `;
+
+    // Recommendation (eager — always expanded)
+    const recSlot = view.querySelector(`[data-role="recommendation"]`);
+    if (recommendation) {
+      try {
+        const text = await ghRaw(`outputs/clients/${slug}/${ts}/COUNCIL_RECOMMENDATION.txt`);
+        const verdict = detectVerdict(text);
+        view.querySelector(`[data-role="verdict-badge"]`).innerHTML = badgeFor(verdict);
+        recSlot.innerHTML = `
+          <div class="panel recommendation">
+            <div class="panel-title">Council recommendation ${badgeFor(verdict)}</div>
+            <div class="panel-body"><pre>${escapeHtml(text || "(empty)")}</pre></div>
+          </div>`;
+      } catch (e) {
+        recSlot.innerHTML = `<div class="status error">Failed to load recommendation: ${escapeHtml(e.message)}</div>`;
+      }
+    } else {
+      view.querySelector(`[data-role="verdict-badge"]`).innerHTML = badgeFor("unknown");
+      recSlot.innerHTML = `<div class="status info">No COUNCIL_RECOMMENDATION.txt in this session — it may have escalated to a human before synthesis.</div>`;
+    }
+
+    // Specialists (collapsible, lazy-loaded on first open)
+    const specSlot = view.querySelector(`[data-role="specialists"]`);
+    if (specSlot) {
+      const order = ["ethics", "security", "architecture", "business_value"];
+      const known = Object.keys(specialists).sort((a, b) => {
+        const ai = order.indexOf(a), bi = order.indexOf(b);
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      });
+      specSlot.innerHTML = known.map(name => {
+        const versions = specialists[name];
+        const versionNote = versions.length > 1 ? `${versions.length} versions` : `v${versions[0].v}`;
+        return `
+          <details class="collapsible" data-specialist="${escapeHtml(name)}">
+            <summary>
+              <span class="summary-label">${escapeHtml(name)}</span>
+              <span class="summary-meta">${versionNote}</span>
+            </summary>
+            <div class="panel-body" data-role="content"><div class="loading">loading</div></div>
+          </details>`;
+      }).join("");
+
+      specSlot.querySelectorAll("details[data-specialist]").forEach((det) => {
+        let loaded = false;
+        det.addEventListener("toggle", async () => {
+          if (!det.open || loaded) return;
+          loaded = true;
+          const name = det.dataset.specialist;
+          const versions = specialists[name];
+          const body = det.querySelector(`[data-role="content"]`);
+          try {
+            const texts = await Promise.all(versions.map(v =>
+              ghRaw(`outputs/clients/${slug}/${ts}/${v.file.name}`)
+            ));
+            if (versions.length === 1) {
+              body.innerHTML = `<pre>${escapeHtml(texts[0] || "(empty)")}</pre>`;
+            } else {
+              const tabs = versions.map((v, i) =>
+                `<button class="version-tab${i === versions.length - 1 ? " active" : ""}" data-idx="${i}">v${v.v}</button>`
+              ).join("");
+              body.innerHTML = `
+                <div class="version-tabs">${tabs}</div>
+                <pre data-role="version-content">${escapeHtml(texts[versions.length - 1] || "(empty)")}</pre>`;
+              body.querySelectorAll(".version-tab").forEach(btn => {
+                btn.addEventListener("click", () => {
+                  body.querySelectorAll(".version-tab").forEach(b => b.classList.remove("active"));
+                  btn.classList.add("active");
+                  body.querySelector(`[data-role="version-content"]`).textContent = texts[Number(btn.dataset.idx)] || "(empty)";
+                });
+              });
+            }
+          } catch (e) {
+            body.innerHTML = `<div class="status error">Failed to load ${escapeHtml(name)}: ${escapeHtml(e.message)}</div>`;
+          }
+        });
+      });
+    }
+
+    // QA cycles (collapsible)
+    const qaSlot = view.querySelector(`[data-role="qa"]`);
+    if (qaSlot) {
+      const cycles = Object.keys(qa).sort();  // cycle1, cycle2, ...
+      qaSlot.innerHTML = cycles.map(c => {
+        const instances = qa[c];
+        return `
+          <details class="collapsible" data-qa="${escapeHtml(c)}">
+            <summary>
+              <span class="summary-label">QA ${escapeHtml(c)}</span>
+              <span class="summary-meta">${instances.length} instance${instances.length === 1 ? "" : "s"}</span>
+            </summary>
+            <div class="panel-body" data-role="content"><div class="loading">loading</div></div>
+          </details>`;
+      }).join("");
+
+      qaSlot.querySelectorAll("details[data-qa]").forEach((det) => {
+        let loaded = false;
+        det.addEventListener("toggle", async () => {
+          if (!det.open || loaded) return;
+          loaded = true;
+          const c = det.dataset.qa;
+          const instances = qa[c];
+          const body = det.querySelector(`[data-role="content"]`);
+          try {
+            const texts = await Promise.all(instances.map(inst =>
+              ghRaw(`outputs/clients/${slug}/${ts}/${inst.file.name}`)
+            ));
+            body.innerHTML = instances.map((inst, i) => `
+              <div style="margin-bottom:1.2rem">
+                <div class="summary-meta" style="margin:0 0 0.4rem">instance ${inst.instance}</div>
+                <pre>${escapeHtml(texts[i] || "(empty)")}</pre>
+              </div>
+            `).join("");
+          } catch (e) {
+            body.innerHTML = `<div class="status error">Failed to load ${escapeHtml(c)}: ${escapeHtml(e.message)}</div>`;
+          }
+        });
+      });
+    }
+  }
+
+  // ── Boot & route handling ──────────────────────────────────────────────
+  async function route() {
+    const r = parseRoute();
+    renderBreadcrumb(r);
+    if (r.view === "clients") await showClients();
+    else if (r.view === "sessions") await showSessions(r.slug);
+    else if (r.view === "session") await showSession(r.slug, r.ts);
+  }
+
+  (async () => {
+    try {
+      await loadToken();
+    } catch (e) {
+      showStatus("error", `
+        <strong>Auth unavailable.</strong> ${escapeHtml(e.message)}<br>
+        <span class="mono">/api/auth/token</span> must return a GitHub token, and the
+        page should sit behind Cloudflare Access. Confirm <span class="mono">GITHUB_TOKEN</span>
+        is set in Pages env vars.`);
+      view.innerHTML = "";
+      return;
+    }
+    window.addEventListener("hashchange", route);
+    await route();
+  })();
+})();
+</script>
+</body>
+</html>
