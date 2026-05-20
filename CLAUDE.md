@@ -17,11 +17,14 @@
 
 ## Intake Form Context
 - Page: /intake (protected via Cloudflare Access, OTP to hefnerjm@gmail.com)
-- Form submits to Cloudflare Worker
-- Worker POSTs to two destinations:
-  1. GitHub API → ainightshift-council repo, intake/clients/[client_slug]/[timestamp]_brief.txt
-  2. VPS webhook → POST /intake on srv1652708.hstgr.cloud (shared secret header)
-- Client list pulled dynamically from GitHub API (reads intake/clients/ folder)
+- Form submits structured JSON to POST /api/intake (Pages Function)
+- POST /api/intake:
+  1. Renders brief template from form fields (functions/api/_lib/brief.js)
+  2. Writes to ainightshift-council via GitHub Contents API at intake/clients/[slug]/[YYYYMMDD_HHMMSS]_brief.txt (canonical)
+  3. Best-effort pings VPS webhook with {client_slug, brief} and X-Webhook-Secret header
+  4. Returns 200 if GitHub succeeded; VPS failure is reported in response body but not fatal
+- GET /api/clients → returns existing client slugs from the council repo (edge-cached 60s) for the form dropdown
+- Tests: node --test functions/api/intake.test.js (Node 18+, no npm install needed)
 
 ## Environment Variables (Cloudflare Workers)
 - GITHUB_TOKEN — PAT with repo write scope
