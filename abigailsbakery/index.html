@@ -1,109 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abigail's Bakery — San Antonio, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest:    #3b5c35;
+      --leaf:      #5a7d4e;
+      --sage:      #7a9b6a;
+      --pale-sage: #c2d5b5;
+      --cream:     #f6f0e4;
+      --warm-off:  #fdf9f0;
+      --parchment: #e8dfc8;
+      --bark:      #4a2f1a;
+      --mid-bark:  #6b4226;
+      --soft-bark: #9b6b40;
+      --sand:      #d4b896;
+      --gold:      #b8860b;
+      --honey:     #c8941a;
+    }
 
-Abigail's Bakery
-SAN ANTONIO, TX
-HANDMADE WITH CORAZÓN
-Baked fresh, crafted with love
-From pillowy pan dulce to golden sourdough, Abigail's Bakery brings together the warmth of Mexican tradition and the craft of contemporary baking — all made by hand in San Antonio.
-ORDER FOR PICKUP
-SEE THE MENU
-SCROLL
-Pan Dulce Sourdough Loaves Tres Leches Cake Croissants Conchas Artisan Pastries Custom Cakes Empanadas Dulces Pan Dulce Sourdough Loaves Tres Leches Cake Croissants Conchas Artisan Pastries Custom Cakes Empanadas Dulces
-OUR STORY
-Where tradition meets the oven
-Abigail grew up watching her grandmother roll out masa on Sunday mornings, the kitchen always smelling of cinnamon and fresh-baked bread. What started as a family ritual became a calling.
-Today, Abigail's Bakery carries that same spirit into every batch — whether it's a tray of buttery conchas kissed with colored sugar, or a rustic sourdough loaf with a crackling crust. Every item is handmade, in small batches, with ingredients you can actually pronounce.
-We bake out of love for San Antonio and the people in it. Come hungry.
-✦
-Made with Intention
-Every product is crafted by hand, in small batches, using wholesome ingredients sourced as locally as possible.
-30+
-VARIETIES BAKED
-100%
-HANDMADE
-SA
-BORN & RAISED
-Daily
-FRESH BATCHES
-OUR SPECIALTIES
-Something sweet for everyone
-🥐
-HOUSE FAVORITE
-Pan Dulce Collection
-Our rotating tray of traditional Mexican sweet breads: conchas in vanilla and chocolate, cuernos, polvorones, and more. Baked every morning. Sell out fast — come early.
-ORDER AHEAD AVAILABLE
-🍞
-ARTISAN BREADS
-Sourdough & Specialty Loaves
-Long-fermented sourdough, jalapeño-cheddar loaves, and seasonal grain breads with a crisp crust and open crumb.
-🎂
-CELEBRATION CAKES
-Tres Leches & Custom Cakes
-Our famous tres leches — pillowy soft and soaked to perfection — plus custom celebration cakes for any occasion. Advance orders welcome.
-🥧
-SWEET PASTRIES
-Empanadas & Turnovers
-Flaky hand-folded empanadas dulces filled with pumpkin, guava, or cajeta. Also available savory.
-🧁
-EVERYDAY TREATS
-Cookies & Bite-size
-Polvorones, snickerdoodles, brown butter chocolate chip, and rotating seasonal flavors. Perfect for gifting or just treating yourself.
-01
-Made from Scratch
-No mixes. No shortcuts. Every recipe built from whole ingredients every single morning.
-02
-Mexican Heritage
-Recipes rooted in tradition — passed down, honored, and refreshed with care.
-03
-Custom Orders
-Birthdays, quinceañeras, weddings, corporate events — if you can dream it, Abigail can bake it.
-04
-Local Love
-San Antonio born and baked. Proud to serve our community one loaf at a time.
-WHAT PEOPLE SAY
-From the neighborhood
-★★★★★
-"The conchas are out of this world — perfectly sugary on top with the softest bread inside. Reminds me exactly of my abuela's kitchen. This place is a treasure."
-MARIA G. — WESTSIDE, SA
-★★★★★
-"I ordered a custom tres leches for my daughter's quinceañera and Abigail knocked it completely out of the park. Everyone kept asking who made the cake."
-LUPITA R. — STONE OAK, SA
-★★★★★
-"I'm a sourdough snob — I'll just say that upfront. Abigail's loaves are genuinely the best in San Antonio. I drive across town every Saturday. Worth every mile."
-JAMES T. — ALAMO HEIGHTS, SA
-PLACE AN ORDER
-Ready to taste something real?
-Stop in Tuesday through Saturday or order ahead for pickup. Custom cakes and large orders require 48–72 hours notice. We'd love to bake for you.
-📍 San Antonio, TX 📞 (210) 555-0142 🕐 Tue–Sat, 7:00 AM – 2:00 PM ✉️ hello@abigailsbakery.com
-Request a Custom Order
-YOUR NAME
-PHONE OR EMAIL
-WHAT ARE YOU LOOKING FOR?
-          Select a category…
-          Pan Dulce Tray
-          Custom Celebration Cake
-          Bread Loaves
-          Pastry Assortment
-          Something Else
-        
-DETAILS & DATE NEEDED
-SEND MY REQUEST
-Abigail's Bakery
-Handmade Mexican and artisan baked goods, baked fresh every morning in San Antonio, Texas.
-MENU
-	•	Pan Dulce
-	•	Artisan Breads
-	•	Celebration Cakes
-	•	Pastries
-	•	Cookies
-ORDER
-	•	Custom Cakes
-	•	Wholesale Trays
-	•	Event Orders
-	•	Contact Us
-HOURS
-	•	Tue–Sat: 7am–2pm
-	•	Sun–Mon: Closed
-	•	San Antonio, TX
-	•	(210) 555-0142
-© 2025 Abigail's Bakery — San Antonio, Texas. All rights reserved.
-Website by AI NightShift SATX
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--warm-off);
+      color: var(--bark);
+      font-family: 'Lora', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* subtle paper texture via repeating radial */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(74,47,26,0.025) 1px, transparent 1px);
+      background-size: 18px 18px;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 56px;
+      background: rgba(246,240,228,0.93);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(90,125,78,0.18);
+    }
+
+    .nav-brand {
+      display: flex; align-items: center; gap: 13px;
+      text-decoration: none; color: var(--bark);
+    }
+
+    .nav-brand-text { line-height: 1.1; }
+    .nav-brand-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      display: block;
+    }
+    .nav-brand-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      display: block;
+    }
+
+    .nav-links { display: flex; gap: 34px; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--mid-bark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--forest); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      padding-top: 72px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      background: var(--warm-off);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* diagonal divider */
+    .hero-right::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--warm-off) 0%, transparent 15%);
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block; width: 30px; height: 1px;
+      background: var(--leaf);
+    }
+
+    .hero-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 4.5vw, 4.6rem);
+      line-height: 1.05;
+      color: var(--bark);
+      margin-bottom: 26px;
+    }
+    .hero-title em { font-style: italic; color: var(--forest); }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--mid-bark);
+      max-width: 400px;
+      margin-bottom: 42px;
+    }
+
+    .btn-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+    .btn-fill {
+      background: var(--forest);
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 2px;
+      font-family: 'Lora', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-fill:hover { background: var(--bark); transform: translateY(-1px); }
+
+    .btn-text {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid-bark);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      background: none; border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .btn-text:hover { color: var(--forest); }
+
+    /* open badge floating on hero */
+    .hero-badge {
+      position: absolute; bottom: 36px; left: 80px;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 18px 24px;
+      border-radius: 2px;
+      font-family: 'Lora', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.6;
+      z-index: 3;
+    }
+    .hero-badge strong {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--pale-sage);
+      display: block;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee {
+      background: var(--forest);
+      color: var(--pale-sage);
+      padding: 13px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-flex;
+      animation: scroll-left 26s linear infinite;
+    }
+    .marquee-item {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      padding: 0 26px;
+      display: inline-flex; align-items: center; gap: 14px;
+    }
+    .marquee-item::after { content: '✦'; font-size: 0.6rem; color: var(--honey); }
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 80px; }
+
+    .eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      margin-bottom: 14px;
+    }
+    .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--leaf); }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      line-height: 1.12;
+      color: var(--bark);
+      margin-bottom: 18px;
+    }
+    .section-title em { font-style: italic; color: var(--forest); }
+
+    /* ── FEATURE: PAN DULCE ── */
+    .pan-dulce {
+      background: var(--parchment);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+      min-height: 580px;
+    }
+
+    .pan-dulce-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .pan-dulce-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 6s ease;
+    }
+    .pan-dulce-img:hover img { transform: scale(1.04); }
+
+    .pan-dulce-img .img-label {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--bark);
+      color: var(--cream);
+      padding: 8px 18px;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Lora', serif;
+      border-radius: 1px;
+    }
+
+    .pan-dulce-text {
+      padding: 70px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pan-dulce-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--mid-bark);
+      margin-bottom: 18px;
+    }
+
+    .variety-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 10px;
+    }
+    .chip {
+      background: var(--cream);
+      border: 1px solid rgba(90,125,78,0.25);
+      color: var(--forest);
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      border-radius: 100px;
+      font-family: 'Lora', serif;
+    }
+
+    /* ── PHOTO GRID ── */
+    .photo-grid-section {
+      padding: 0;
+      background: var(--bark);
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 260px 260px;
+    }
+    .photo-grid-item {
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-grid-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.88);
+    }
+    .photo-grid-item:hover img { transform: scale(1.06); filter: brightness(1); }
+
+    .photo-grid-item.wide { grid-column: span 2; }
+    .photo-grid-item.tall { grid-row: span 2; }
+
+    .photo-grid-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 14px 18px;
+      background: linear-gradient(to top, rgba(30,18,8,0.75), transparent);
+      color: rgba(246,240,228,0.9);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Lora', serif;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-grid-item:hover .photo-grid-caption { opacity: 1; }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--warm-off);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--mid-bark);
+      margin-bottom: 18px;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 36px;
+    }
+    .stat {
+      background: var(--parchment);
+      border-left: 3px solid var(--sage);
+      padding: 22px 20px;
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--forest);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-bark);
+      margin-top: 4px;
+    }
+
+    .about-logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .logo-circle {
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: var(--parchment);
+      border: 1.5px solid rgba(90,125,78,0.22);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    .logo-ring-text {
+      position: absolute; inset: 0;
+    }
+
+    .logo-caption {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--soft-bark);
+      text-align: center;
+    }
+
+    /* ── MENU GRID ── */
+    .menu-section { background: var(--cream); }
+
+    .menu-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 52px;
+    }
+
+    .menu-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .menu-card {
+      background: var(--warm-off);
+      border: 1px solid rgba(90,125,78,0.15);
+      padding: 0;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(59,92,53,0.12);
+    }
+
+    .menu-card-img {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .menu-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .menu-card:hover .menu-card-img img { transform: scale(1.08); }
+
+    .menu-card-body { padding: 28px 26px 32px; }
+
+    .menu-card-cat {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--leaf);
+      margin-bottom: 8px;
+    }
+    .menu-card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--bark);
+      margin-bottom: 10px;
+    }
+    .menu-card-desc {
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--mid-bark);
+    }
+
+    .menu-card.featured-card {
+      background: var(--forest);
+      border-color: var(--forest);
+    }
+    .menu-card.featured-card .menu-card-cat  { color: var(--pale-sage); }
+    .menu-card.featured-card .menu-card-title { color: var(--cream); }
+    .menu-card.featured-card .menu-card-desc  { color: rgba(194,213,181,0.85); }
+    .menu-card.featured-card .menu-card-body  { background: var(--forest); }
+
+    /* ── SPECIALTIES STRIP ── */
+    .strip {
+      background: var(--bark);
+      color: var(--sand);
+      padding: 72px 80px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .strip-item {
+      padding: 0 36px;
+      border-right: 1px solid rgba(155,107,64,0.3);
+    }
+    .strip-item:first-child { padding-left: 0; }
+    .strip-item:last-child  { border-right: none; }
+
+    .strip-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      color: rgba(200,148,26,0.2);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .strip-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .strip-desc {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: var(--sand);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--parchment); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .tcard {
+      background: var(--warm-off);
+      border: 1px solid rgba(90,125,78,0.12);
+      padding: 34px 30px;
+      transition: transform 0.3s;
+    }
+    .tcard:hover { transform: translateY(-3px); }
+
+    .tcard-stars { color: var(--honey); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 16px; }
+    .tcard-text {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--mid-bark);
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+    .tcard-author {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--leaf);
+    }
+
+    /* ── ORDER CTA ── */
+    .order-section {
+      background: var(--forest);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      padding: 100px 80px;
+    }
+
+    .order-section .eyebrow { color: var(--pale-sage); }
+    .order-section .eyebrow::before { background: var(--pale-sage); }
+    .order-section .section-title { color: var(--cream); }
+    .order-section .section-title em { color: var(--pale-sage); }
+
+    .order-info p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(194,213,181,0.9);
+      margin-bottom: 28px;
+    }
+
+    .contact-list { list-style: none; }
+    .contact-list li {
+      font-size: 0.9rem;
+      color: rgba(194,213,181,0.8);
+      padding: 7px 0;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .contact-list .icon { font-size: 1rem; }
+
+    .order-form {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 44px 40px;
+    }
+    .order-form h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 28px;
+    }
+    .frow { margin-bottom: 16px; }
+    .frow label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(194,213,181,0.7);
+      margin-bottom: 5px;
+    }
+    .frow input,
+    .frow select,
+    .frow textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 12px 14px;
+      color: var(--cream);
+      font-family: 'Lora', serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 1px;
+    }
+    .frow input::placeholder,
+    .frow textarea::placeholder { color: rgba(194,213,181,0.35); }
+    .frow input:focus,
+    .frow select:focus,
+    .frow textarea:focus { border-color: rgba(194,213,181,0.5); }
+    .frow select option { background: var(--bark); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--bark);
+      color: var(--cream);
+      padding: 14px;
+      border: none;
+      font-family: 'Lora', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: #2e1a0a; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bark);
+      color: var(--soft-bark);
+      padding: 70px 80px 36px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(155,107,64,0.2);
+      margin-bottom: 32px;
+    }
+    .fbrand-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin: 18px 0 10px;
+    }
+    .fbrand-desc {
+      font-size: 0.84rem;
+      line-height: 1.75;
+      max-width: 240px;
+    }
+
+    .fcol h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 18px;
+    }
+    .fcol ul { list-style: none; }
+    .fcol ul li { margin-bottom: 9px; }
+    .fcol ul li a {
+      font-size: 0.84rem;
+      color: var(--soft-bark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .fcol ul li a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.76rem;
+    }
+    .footer-bottom a { color: var(--soft-bark); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--cream); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 14px 22px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 50vw; }
+      .hero-left { padding: 80px 24px 60px; }
+      .hero-badge { left: 24px; }
+      section { padding: 70px 24px; }
+      .pan-dulce { grid-template-columns: 1fr; }
+      .pan-dulce-img { height: 280px; }
+      .pan-dulce-text { padding: 40px 24px; }
+      .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .photo-grid-item.wide { grid-column: span 1; }
+      .photo-grid-item.tall { grid-row: span 1; }
+      .about { grid-template-columns: 1fr; }
+      .menu-cards { grid-template-columns: 1fr; }
+      .strip { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .strip-item { border-right: none; padding: 0; border-bottom: 1px solid rgba(155,107,64,0.2); padding-bottom: 24px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .order-section { grid-template-columns: 1fr; gap: 40px; padding: 70px 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <!-- Starfish: 5 arms, 1 dot per arm, 1 center dot -->
+    <svg width="38" height="38" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="46" fill="#f6f0e4" stroke="#5a7d4e" stroke-width="1.2"/>
+      <!-- 5-arm starfish: arms at 90°, 162°, 234°, 306°, 18° (top = 90° offset) -->
+      <path d="
+        M50,50
+        L46,22 Q50,14 54,22 Z
+        M50,50
+        L72,30 Q79,24 76,33 Z
+        M50,50
+        L76,63 Q82,70 73,71 Z
+        M50,50
+        L35,72 Q31,81 26,73 Z
+        M50,50
+        L24,33 Q18,27 26,27 Z
+      " fill="#5a7d4e" stroke="#3b5c35" stroke-width="0.8" stroke-linejoin="round"/>
+      <!-- Arm dots — one per arm -->
+      <circle cx="50" cy="20" r="3.2" fill="#3b5c35"/>
+      <circle cx="74" cy="32" r="3.2" fill="#3b5c35"/>
+      <circle cx="65" cy="68" r="3.2" fill="#3b5c35"/>
+      <circle cx="29" cy="68" r="3.2" fill="#3b5c35"/>
+      <circle cx="22" cy="34" r="3.2" fill="#3b5c35"/>
+      <!-- Center dot -->
+      <circle cx="50" cy="50" r="5.5" fill="#3b5c35"/>
+    </svg>
+    <span class="nav-brand-text">
+      <span class="nav-brand-name">Abigail's Bakery</span>
+      <span class="nav-brand-sub">San Antonio, TX</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#order">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Handmade in San Antonio</div>
+    <h1 class="hero-title">
+      Fresh baked,<br>
+      <em>full of heart</em>
+    </h1>
+    <p class="hero-desc">
+      Pan dulce, artisan breads, and celebration cakes — each one made by hand, in small batches, with ingredients you can feel good about.
+    </p>
+    <div class="btn-row">
+      <a href="#order" class="btn-fill">Order for Pickup</a>
+      <a href="#menu" class="btn-text">See our Menu</a>
+    </div>
+    <div class="hero-badge">
+      <strong>Open Now</strong>
+      Tues – Sat<br>
+      7:00 AM – 2:00 PM
+    </div>
+  </div>
+  <div class="hero-right">
+    <img
+      src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80&fit=crop"
+      alt="Fresh baked artisan breads and pastries"
+      loading="eager"
+    />
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">Conchas</span>
+    <span class="marquee-item">Pan de Muerto</span>
+    <span class="marquee-item">Sourdough Loaves</span>
+    <span class="marquee-item">Tres Leches Cake</span>
+    <span class="marquee-item">Cuernos</span>
+    <span class="marquee-item">Empanadas Dulces</span>
+    <span class="marquee-item">Croissants</span>
+    <span class="marquee-item">Polvorones</span>
+    <span class="marquee-item">Custom Cakes</span>
+    <span class="marquee-item">Conchas</span>
+    <span class="marquee-item">Pan de Muerto</span>
+    <span class="marquee-item">Sourdough Loaves</span>
+    <span class="marquee-item">Tres Leches Cake</span>
+    <span class="marquee-item">Cuernos</span>
+    <span class="marquee-item">Empanadas Dulces</span>
+    <span class="marquee-item">Croissants</span>
+    <span class="marquee-item">Polvorones</span>
+    <span class="marquee-item">Custom Cakes</span>
+  </div>
+</div>
+
+<!-- FEATURED: PAN DULCE -->
+<div class="pan-dulce">
+  <div class="pan-dulce-img">
+    <img
+      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop"
+      alt="Pan dulce - colorful Mexican sweet breads"
+      loading="lazy"
+    />
+    <span class="img-label">Pan Dulce — Daily Fresh</span>
+  </div>
+  <div class="pan-dulce-text">
+    <div class="eyebrow">House Specialty</div>
+    <h2 class="section-title">The <em>pan dulce</em> you've been dreaming of</h2>
+    <p>
+      Every morning starts with a fresh tray of traditional Mexican sweet breads. Conchas with their signature sugary shell, buttery cuernos, soft polvorones, and seasonal specialties — each recipe rooted in generations of Mexican baking tradition.
+    </p>
+    <p>
+      We sell out most days. Come early, or call ahead.
+    </p>
+    <div class="variety-chips">
+      <span class="chip">Conchas</span>
+      <span class="chip">Cuernos</span>
+      <span class="chip">Polvorones</span>
+      <span class="chip">Orejas</span>
+      <span class="chip">Campechanas</span>
+      <span class="chip">Bigotes</span>
+      <span class="chip">Pan de Muerto</span>
+      <span class="chip">+ Seasonal</span>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO GRID -->
+<div class="photo-grid-section">
+  <div class="photo-grid">
+    <div class="photo-grid-item tall">
+      <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=75&fit=crop" alt="Sourdough loaf" loading="lazy"/>
+      <span class="photo-grid-caption">Sourdough</span>
+    </div>
+    <div class="photo-grid-item">
+      <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=500&q=75&fit=crop" alt="Pastries" loading="lazy"/>
+      <span class="photo-grid-caption">Pastries</span>
+    </div>
+    <div class="photo-grid-item">
+      <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=500&q=75&fit=crop" alt="Cookies" loading="lazy"/>
+      <span class="photo-grid-caption">Cookies</span>
+    </div>
+    <div class="photo-grid-item wide">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=75&fit=crop" alt="Celebration cake" loading="lazy"/>
+      <span class="photo-grid-caption">Celebration Cakes</span>
+    </div>
+    <div class="photo-grid-item">
+      <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=500&q=75&fit=crop" alt="Croissants" loading="lazy"/>
+      <span class="photo-grid-caption">Croissants</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="story">
+  <div class="about-text">
+    <div class="eyebrow">Our Story</div>
+    <h2 class="section-title">Where <em>tradition</em> rises</h2>
+    <p>
+      Abigail grew up watching her grandmother roll dough on Sunday mornings — the kitchen thick with cinnamon and the sound of family gathering. What started as ritual became calling.
+    </p>
+    <p>
+      Today, Abigail's Bakery carries that warmth into every batch. Whether it's a tray of conchas kissed with colored sugar or a rustic sourdough with a crackling crust, every item is handmade, in small batches, with real ingredients.
+    </p>
+    <p>We bake out of love for San Antonio and the people in it.</p>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Varieties</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Handmade</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Daily</div>
+        <div class="stat-label">Fresh Batches</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">SA</div>
+        <div class="stat-label">Born & Raised</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-logo-block">
+    <div class="logo-circle">
+      <!-- Large center starfish with circular text -->
+      <svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ring text path -->
+        <defs>
+          <path id="ringpath" d="M110,110 m-92,0 a92,92 0 1,1 184,0 a92,92 0 1,1 -184,0"/>
+        </defs>
+        <text font-family="'Lora', serif" font-size="9.5" fill="#7a9b6a" letter-spacing="3.5">
+          <textPath href="#ringpath" startOffset="0%">✦  ABIGAIL'S BAKERY  ✦  SAN ANTONIO, TEXAS  ✦  HANDMADE WITH LOVE  </textPath>
+        </text>
+        <!-- Starfish body — 5 organic arms -->
+        <g transform="translate(110,110)">
+          <!-- Arm 1: top -->
+          <path d="M0,0 L-7,-28 Q0,-52 7,-28 Z" fill="#5a7d4e"/>
+          <!-- Arm 2: upper-right -->
+          <path d="M0,0 L24,-18 Q44,-28 30,-10 Z" fill="#5a7d4e"/>
+          <!-- Arm 3: lower-right -->
+          <path d="M0,0 L28,16 Q42,34 22,30 Z" fill="#5a7d4e"/>
+          <!-- Arm 4: lower-left -->
+          <path d="M0,0 L-20,24 Q-34,40 -36,20 Z" fill="#5a7d4e"/>
+          <!-- Arm 5: upper-left -->
+          <path d="M0,0 L-34,-10 Q-48,-22 -28,-24 Z" fill="#5a7d4e"/>
+          <!-- Arm tip dots (1 per arm) -->
+          <circle cx="0"  cy="-48" r="4.5" fill="#3b5c35"/>
+          <circle cx="38" cy="-22" r="4.5" fill="#3b5c35"/>
+          <circle cx="36" cy="30"  r="4.5" fill="#3b5c35"/>
+          <circle cx="-36" cy="24" r="4.5" fill="#3b5c35"/>
+          <circle cx="-40" cy="-20" r="4.5" fill="#3b5c35"/>
+          <!-- Center dot -->
+          <circle cx="0" cy="0" r="9" fill="#3b5c35"/>
+          <circle cx="0" cy="0" r="4.5" fill="#5a7d4e"/>
+        </g>
+      </svg>
+    </div>
+    <p class="logo-caption">Est. San Antonio, Texas</p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <div>
+      <div class="eyebrow">What We Bake</div>
+      <h2 class="section-title">Something <em>sweet</em> for everyone</h2>
+    </div>
+  </div>
+  <div class="menu-cards">
+    <div class="menu-card featured-card">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80&fit=crop" alt="Pan dulce conchas" loading="lazy"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-cat">House Favorite — Order Ahead</div>
+        <div class="menu-card-title">Pan Dulce Collection</div>
+        <div class="menu-card-desc">Rotating trays of traditional Mexican sweet breads baked every morning. Conchas, cuernos, polvorones, and seasonal specials. Sell out early — call ahead.</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80&fit=crop&crop=center" alt="Artisan bread loaves" loading="lazy"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-cat">Artisan Breads</div>
+        <div class="menu-card-title">Sourdough & Specialty Loaves</div>
+        <div class="menu-card-desc">Long-fermented sourdough, jalapeño-cheddar loaves, and seasonal grain breads. Crackling crust, open crumb — real bread.</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80&fit=crop" alt="Celebration cake" loading="lazy"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-cat">Celebration Cakes</div>
+        <div class="menu-card-title">Tres Leches & Custom Cakes</div>
+        <div class="menu-card-desc">Our famous tres leches soaked to perfection. Custom celebration cakes for quinceañeras, weddings, birthdays. 48–72 hr notice required.</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=600&q=80&fit=crop" alt="Pastries and croissants" loading="lazy"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-cat">Pastries</div>
+        <div class="menu-card-title">Croissants & Empanadas</div>
+        <div class="menu-card-desc">Buttery croissants and flaky hand-folded empanadas dulces — guava, cajeta, pumpkin. Also available savory.</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=600&q=80&fit=crop" alt="Cookies and bites" loading="lazy"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-cat">Everyday Treats</div>
+        <div class="menu-card-title">Cookies & Bites</div>
+        <div class="menu-card-desc">Polvorones, snickerdoodles, brown butter chocolate chip, and rotating seasonal flavors. Perfect for gifting or just because.</div>
+      </div>
+    </div>
+
+    <div class="menu-card">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&q=80&fit=crop" alt="Custom and seasonal" loading="lazy"/>
+      </div>
+      <div class="menu-card-body">
+        <div class="menu-card-cat">Seasonal & Custom</div>
+        <div class="menu-card-title">Special Orders Welcome</div>
+        <div class="menu-card-desc">From corporate trays to holiday packs — if you can dream it, Abigail can bake it. Reach out and let's talk.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <div class="strip-num">01</div>
+    <div class="strip-title">Scratch Made</div>
+    <div class="strip-desc">No mixes. No shortcuts. Every recipe built from whole ingredients every single morning.</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">02</div>
+    <div class="strip-title">Mexican Heritage</div>
+    <div class="strip-desc">Recipes rooted in tradition — passed down, honored, and refreshed with care.</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">03</div>
+    <div class="strip-title">Custom Orders</div>
+    <div class="strip-desc">Quinceañeras, weddings, events — we'd love to bake something special for yours.</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num">04</div>
+    <div class="strip-title">Local Love</div>
+    <div class="strip-desc">San Antonio born and baked. Proud to serve this community one loaf at a time.</div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="eyebrow">What People Say</div>
+  <h2 class="section-title">From the <em>neighborhood</em></h2>
+  <div class="testimonials-grid">
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"The conchas are out of this world — perfectly sugary on top with the softest bread inside. Reminds me exactly of my abuela's kitchen. This place is a treasure."</p>
+      <div class="tcard-author">Maria G. — Westside, SA</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"I ordered a custom tres leches for my daughter's quinceañera and Abigail knocked it completely out of the park. Everyone kept asking who made the cake."</p>
+      <div class="tcard-author">Lupita R. — Stone Oak, SA</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-stars">★★★★★</div>
+      <p class="tcard-text">"I'm a sourdough snob — I'll just say that upfront. Abigail's loaves are genuinely the best in San Antonio. I drive across town every Saturday. Worth every mile."</p>
+      <div class="tcard-author">James T. — Alamo Heights, SA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER CTA -->
+<div class="order-section" id="order">
+  <div class="order-info">
+    <div class="eyebrow">Place an Order</div>
+    <h2 class="section-title">Ready to taste something <em>real</em>?</h2>
+    <p>Stop in Tuesday through Saturday or order ahead for pickup. Custom cakes and large orders need 48–72 hours notice. We'd love to bake for you.</p>
+    <ul class="contact-list">
+      <li><span class="icon">📍</span> San Antonio, Texas</li>
+      <li><span class="icon">📞</span> (210) 555-0142</li>
+      <li><span class="icon">🕐</span> Tues–Sat, 7:00 AM – 2:00 PM</li>
+      <li><span class="icon">✉️</span> hello@abigailsbakery.com</li>
+    </ul>
+  </div>
+  <div class="order-form">
+    <h3>Request a Custom Order</h3>
+    <div class="frow">
+      <label>Your Name</label>
+      <input type="text" placeholder="Rosa Martínez" />
+    </div>
+    <div class="frow">
+      <label>Phone or Email</label>
+      <input type="text" placeholder="(210) 555-0000" />
+    </div>
+    <div class="frow">
+      <label>What are you looking for?</label>
+      <select>
+        <option value="">Select a category…</option>
+        <option>Pan Dulce Tray</option>
+        <option>Custom Celebration Cake</option>
+        <option>Bread Loaves</option>
+        <option>Pastry Assortment</option>
+        <option>Something Else</option>
+      </select>
+    </div>
+    <div class="frow">
+      <label>Details & Date Needed</label>
+      <textarea rows="3" placeholder="Tell Abigail a little about what you need…"></textarea>
+    </div>
+    <button class="btn-submit">Send My Request</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,50 L46,22 Q50,14 54,22 Z M50,50 L72,30 Q79,24 76,33 Z M50,50 L76,63 Q82,70 73,71 Z M50,50 L35,72 Q31,81 26,73 Z M50,50 L24,33 Q18,27 26,27 Z" fill="#5a7d4e"/>
+        <circle cx="50" cy="20" r="3.2" fill="#3b5c35"/>
+        <circle cx="74" cy="32" r="3.2" fill="#3b5c35"/>
+        <circle cx="65" cy="68" r="3.2" fill="#3b5c35"/>
+        <circle cx="29" cy="68" r="3.2" fill="#3b5c35"/>
+        <circle cx="22" cy="34" r="3.2" fill="#3b5c35"/>
+        <circle cx="50" cy="50" r="5.5" fill="#3b5c35"/>
+      </svg>
+      <div class="fbrand-name">Abigail's Bakery</div>
+      <p class="fbrand-desc">Handmade Mexican and artisan baked goods, baked fresh every morning in San Antonio, Texas.</p>
+    </div>
+    <div class="fcol">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="#menu">Pan Dulce</a></li>
+        <li><a href="#menu">Artisan Breads</a></li>
+        <li><a href="#menu">Celebration Cakes</a></li>
+        <li><a href="#menu">Pastries</a></li>
+        <li><a href="#menu">Cookies</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Order</h4>
+      <ul>
+        <li><a href="#order">Custom Cakes</a></li>
+        <li><a href="#order">Wholesale Trays</a></li>
+        <li><a href="#order">Event Orders</a></li>
+        <li><a href="#order">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Hours</h4>
+      <ul>
+        <li><a href="#">Tues–Sat: 7am–2pm</a></li>
+        <li><a href="#">Sun–Mon: Closed</a></li>
+        <li><a href="#">San Antonio, TX</a></li>
+        <li><a href="#">(210) 555-0142</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Abigail's Bakery — San Antonio, Texas. All rights reserved.</span>
+    <span>Website by <a href="https://ainightshiftsatx.com" target="_blank">AI NightShift SATX</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
