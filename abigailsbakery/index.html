@@ -222,39 +222,39 @@
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <radialGradient id="arm-grad" cx="30%" cy="20%" r="70%">
-      <stop offset="0%" stop-color="#7aac68"/>
-      <stop offset="55%" stop-color="#4e7a42"/>
-      <stop offset="100%" stop-color="#2e5228"/>
+      <stop offset="0%" stop-color="#f5a535"/>
+      <stop offset="55%" stop-color="#d4710e"/>
+      <stop offset="100%" stop-color="#a34d06"/>
     </radialGradient>
     <radialGradient id="arm-shade" cx="70%" cy="80%" r="60%">
-      <stop offset="0%" stop-color="#2a4a22" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#2a4a22" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#7a3300" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#7a3300" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="disc-grad" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#8abb78"/>
-      <stop offset="40%" stop-color="#527a45"/>
-      <stop offset="100%" stop-color="#2d4e26"/>
+      <stop offset="0%" stop-color="#f6b84a"/>
+      <stop offset="40%" stop-color="#c86010"/>
+      <stop offset="100%" stop-color="#8c3e04"/>
     </radialGradient>
     <radialGradient id="dot-grad" cx="30%" cy="28%" r="65%">
-      <stop offset="0%" stop-color="#4a7040"/>
-      <stop offset="100%" stop-color="#1e3618"/>
+      <stop offset="0%" stop-color="#c97020"/>
+      <stop offset="100%" stop-color="#6b2c02"/>
     </radialGradient>
     <radialGradient id="center-dot-grad" cx="30%" cy="28%" r="65%">
-      <stop offset="0%" stop-color="#6a9a5a"/>
-      <stop offset="100%" stop-color="#1e3618"/>
+      <stop offset="0%" stop-color="#f0a030"/>
+      <stop offset="100%" stop-color="#6b2c02"/>
     </radialGradient>
     <filter id="soft-shadow">
-      <feDropShadow dx="2" dy="5" stdDeviation="8" flood-color="#1a2e14" flood-opacity="0.32"/>
+      <feDropShadow dx="2" dy="5" stdDeviation="8" flood-color="#7a3300" flood-opacity="0.32"/>
     </filter>
     <!-- Single arm path reused via symbol -->
     <symbol id="starfish-arm" viewBox="-60 -240 120 250">
       <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#arm-grad)"/>
       <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#arm-shade)"/>
-      <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#93c47d" opacity="0.38"/>
-      <path d="M-54,-80 C-46,-90 -40,-110 -32,-130" fill="none" stroke="#2d4e26" stroke-width="1" opacity="0.28"/>
-      <path d="M54,-80 C46,-90 40,-110 32,-130" fill="none" stroke="#2d4e26" stroke-width="1" opacity="0.28"/>
-      <circle cx="0" cy="-128" r="13" fill="url(#dot-grad)" stroke="#1e3618" stroke-width="0.8"/>
-      <circle cx="0" cy="-128" r="5.5" fill="#9acc88" opacity="0.48"/>
+      <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#f9d080" opacity="0.38"/>
+      <path d="M-54,-80 C-46,-90 -40,-110 -32,-130" fill="none" stroke="#7a3300" stroke-width="1" opacity="0.28"/>
+      <path d="M54,-80 C46,-90 40,-110 32,-130" fill="none" stroke="#7a3300" stroke-width="1" opacity="0.28"/>
+      <circle cx="0" cy="-128" r="13" fill="url(#dot-grad)" stroke="#5c2200" stroke-width="0.8"/>
+      <circle cx="0" cy="-128" r="5.5" fill="#f9c060" opacity="0.48"/>
     </symbol>
   </defs>
 </svg>
@@ -270,10 +270,10 @@
         <g transform="translate(100,100) rotate(54)"><use href="#starfish-arm"/></g>
         <g transform="translate(100,100) rotate(126)"><use href="#starfish-arm"/></g>
         <g transform="translate(100,100) rotate(198)"><use href="#starfish-arm"/></g>
-        <circle cx="100" cy="100" r="26" fill="url(#disc-grad)" stroke="#1e3618" stroke-width="1"/>
-        <circle cx="100" cy="100" r="20" fill="none" stroke="#2d4e26" stroke-width="0.8" opacity="0.4"/>
-        <circle cx="100" cy="100" r="9" fill="url(#center-dot-grad)" stroke="#1e3618" stroke-width="0.7"/>
-        <circle cx="100" cy="100" r="3.5" fill="#9acc88" opacity="0.45"/>
+        <circle cx="100" cy="100" r="26" fill="url(#disc-grad)" stroke="#5c2200" stroke-width="1"/>
+        <circle cx="100" cy="100" r="20" fill="none" stroke="#7a3300" stroke-width="0.8" opacity="0.4"/>
+        <circle cx="100" cy="100" r="9" fill="url(#center-dot-grad)" stroke="#5c2200" stroke-width="0.7"/>
+        <circle cx="100" cy="100" r="3.5" fill="#f9c060" opacity="0.45"/>
       </g>
     </svg>
     <span>
@@ -387,13 +387,13 @@
           <g transform="translate(340,340) rotate(54)"><use href="#starfish-arm"/></g>
           <g transform="translate(340,340) rotate(126)"><use href="#starfish-arm"/></g>
           <g transform="translate(340,340) rotate(198)"><use href="#starfish-arm"/></g>
-          <circle cx="340" cy="340" r="62" fill="url(#disc-grad)" stroke="#1e3618" stroke-width="1.2"/>
-          <circle cx="340" cy="340" r="48" fill="none" stroke="#2d4e26" stroke-width="1" opacity="0.4"/>
-          <circle cx="340" cy="340" r="34" fill="none" stroke="#2d4e26" stroke-width="0.8" opacity="0.3"/>
-          <circle cx="340" cy="340" r="20" fill="url(#center-dot-grad)" stroke="#1e3618" stroke-width="0.8"/>
-          <circle cx="340" cy="340" r="8" fill="#9acc88" opacity="0.45"/>
+          <circle cx="340" cy="340" r="62" fill="url(#disc-grad)" stroke="#5c2200" stroke-width="1.2"/>
+          <circle cx="340" cy="340" r="48" fill="none" stroke="#7a3300" stroke-width="1" opacity="0.4"/>
+          <circle cx="340" cy="340" r="34" fill="none" stroke="#7a3300" stroke-width="0.8" opacity="0.3"/>
+          <circle cx="340" cy="340" r="20" fill="url(#center-dot-grad)" stroke="#5c2200" stroke-width="0.8"/>
+          <circle cx="340" cy="340" r="8" fill="#f9c060" opacity="0.45"/>
         </g>
-        <text font-family="'Lora', Georgia, serif" font-size="17" fill="#7a9b6a" letter-spacing="4.5">
+        <text font-family="'Lora', Georgia, serif" font-size="17" fill="#c86010" letter-spacing="4.5">
           <textPath href="#about-ring" startOffset="4%">✦  ABIGAIL'S BAKERY  ✦  SAN ANTONIO, TEXAS  ✦  HANDMADE WITH LOVE</textPath>
         </text>
       </svg>
@@ -420,7 +420,7 @@
       </div>
     </div>
     <div class="menu-card">
-      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1552459578-59fbe8a43b3b?w=600&q=80&fit=crop&crop=center" alt="Braided Challah loaf" loading="lazy"/></div>
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1552302094-91d111d7aad0?w=600&q=80&fit=crop&crop=center" alt="Braided Challah loaf" loading="lazy"/></div>
       <div class="menu-card-body">
         <div class="menu-card-cat">Artisan Breads</div>
         <div class="menu-card-title">Sourdough & Challah</div>
@@ -517,9 +517,9 @@
           <g transform="translate(100,100) rotate(54)"><use href="#starfish-arm"/></g>
           <g transform="translate(100,100) rotate(126)"><use href="#starfish-arm"/></g>
           <g transform="translate(100,100) rotate(198)"><use href="#starfish-arm"/></g>
-          <circle cx="100" cy="100" r="26" fill="url(#disc-grad)" stroke="#1e3618" stroke-width="1"/>
-          <circle cx="100" cy="100" r="9" fill="url(#center-dot-grad)" stroke="#1e3618" stroke-width="0.7"/>
-          <circle cx="100" cy="100" r="3.5" fill="#9acc88" opacity="0.45"/>
+          <circle cx="100" cy="100" r="26" fill="url(#disc-grad)" stroke="#5c2200" stroke-width="1"/>
+          <circle cx="100" cy="100" r="9" fill="url(#center-dot-grad)" stroke="#5c2200" stroke-width="0.7"/>
+          <circle cx="100" cy="100" r="3.5" fill="#f9c060" opacity="0.45"/>
         </g>
       </svg>
       <div class="fbrand-name">Abigail's Bakery</div>
