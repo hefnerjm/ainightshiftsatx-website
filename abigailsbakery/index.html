@@ -218,64 +218,67 @@
 </head>
 <body>
 
-<!-- SHARED STARFISH SVG DEFS — referenced by use tags throughout -->
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <radialGradient id="arm-grad" cx="30%" cy="20%" r="70%">
-      <stop offset="0%" stop-color="#f5a535"/>
-      <stop offset="55%" stop-color="#d4710e"/>
-      <stop offset="100%" stop-color="#a34d06"/>
-    </radialGradient>
-    <radialGradient id="arm-shade" cx="70%" cy="80%" r="60%">
-      <stop offset="0%" stop-color="#7a3300" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#7a3300" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="disc-grad" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#f6b84a"/>
-      <stop offset="40%" stop-color="#c86010"/>
-      <stop offset="100%" stop-color="#8c3e04"/>
-    </radialGradient>
-    <radialGradient id="dot-grad" cx="30%" cy="28%" r="65%">
-      <stop offset="0%" stop-color="#c97020"/>
-      <stop offset="100%" stop-color="#6b2c02"/>
-    </radialGradient>
-    <radialGradient id="center-dot-grad" cx="30%" cy="28%" r="65%">
-      <stop offset="0%" stop-color="#f0a030"/>
-      <stop offset="100%" stop-color="#6b2c02"/>
-    </radialGradient>
-    <filter id="soft-shadow">
-      <feDropShadow dx="2" dy="5" stdDeviation="8" flood-color="#7a3300" flood-opacity="0.32"/>
-    </filter>
-    <!-- Single arm path reused via symbol -->
-    <symbol id="starfish-arm" viewBox="-60 -240 120 250">
-      <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#arm-grad)"/>
-      <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#arm-shade)"/>
-      <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#f9d080" opacity="0.38"/>
-      <path d="M-54,-80 C-46,-90 -40,-110 -32,-130" fill="none" stroke="#7a3300" stroke-width="1" opacity="0.28"/>
-      <path d="M54,-80 C46,-90 40,-110 32,-130" fill="none" stroke="#7a3300" stroke-width="1" opacity="0.28"/>
-      <circle cx="0" cy="-128" r="13" fill="url(#dot-grad)" stroke="#5c2200" stroke-width="0.8"/>
-      <circle cx="0" cy="-128" r="5.5" fill="#f9c060" opacity="0.48"/>
-    </symbol>
-  </defs>
-</svg>
-
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-brand">
-    <svg width="40" height="40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="96" fill="#f6f0e4" stroke="#c2d5b5" stroke-width="1.5"/>
-      <g filter="url(#soft-shadow)">
-        <g transform="translate(100,100) rotate(-90)"><use href="#starfish-arm"/></g>
-        <g transform="translate(100,100) rotate(-18)"><use href="#starfish-arm"/></g>
-        <g transform="translate(100,100) rotate(54)"><use href="#starfish-arm"/></g>
-        <g transform="translate(100,100) rotate(126)"><use href="#starfish-arm"/></g>
-        <g transform="translate(100,100) rotate(198)"><use href="#starfish-arm"/></g>
-        <circle cx="100" cy="100" r="26" fill="url(#disc-grad)" stroke="#5c2200" stroke-width="1"/>
-        <circle cx="100" cy="100" r="20" fill="none" stroke="#7a3300" stroke-width="0.8" opacity="0.4"/>
-        <circle cx="100" cy="100" r="9" fill="url(#center-dot-grad)" stroke="#5c2200" stroke-width="0.7"/>
-        <circle cx="100" cy="100" r="3.5" fill="#f9c060" opacity="0.45"/>
-      </g>
-    </svg>
+    <svg width="42" height="42" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sg-arm" cx="28%" cy="18%" r="72%">
+      <stop offset="0%" stop-color="#f5a535"/><stop offset="55%" stop-color="#d4710e"/><stop offset="100%" stop-color="#a34d06"/>
+    </radialGradient>
+    <radialGradient id="sg-shade" cx="70%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#7a3300" stop-opacity="0.5"/><stop offset="100%" stop-color="#7a3300" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sg-disc" cx="36%" cy="30%" r="64%">
+      <stop offset="0%" stop-color="#f6b84a"/><stop offset="45%" stop-color="#c86010"/><stop offset="100%" stop-color="#8c3e04"/>
+    </radialGradient>
+    <radialGradient id="sg-dot" cx="28%" cy="26%" r="66%">
+      <stop offset="0%" stop-color="#c97020"/><stop offset="100%" stop-color="#6b2c02"/>
+    </radialGradient>
+    <radialGradient id="sg-cdot" cx="28%" cy="26%" r="66%">
+      <stop offset="0%" stop-color="#f0a030"/><stop offset="100%" stop-color="#6b2c02"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="#fdf4e7" stroke="#e8c88a" stroke-width="1.5"/>
+  <g transform="translate(100,100) rotate(-90)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#sg-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(-18)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#sg-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(54)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#sg-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(126)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#sg-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(198)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#sg-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#sg-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <circle cx="100" cy="100" r="20" fill="url(#sg-disc)" stroke="#5c2200" stroke-width="1"/>
+  <circle cx="100" cy="100" r="8" fill="url(#sg-cdot)" stroke="#5c2200" stroke-width="0.6"/>
+  <circle cx="100" cy="100" r="3" fill="#f9d080" opacity="0.5"/>
+</svg>
     <span>
       <span class="nav-brand-name">Abigail's Bakery</span>
       <span class="nav-brand-sub">San Antonio, TX</span>
@@ -377,26 +380,69 @@
   <div class="about-logo-block">
     <div class="logo-circle">
       <!-- Large hero starfish in about section -->
-      <svg width="250" height="250" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="about-ring" d="M340,340 m-255,0 a255,255 0 1,1 510,0 a255,255 0 1,1 -510,0"/>
-        </defs>
-        <g filter="url(#soft-shadow)">
-          <g transform="translate(340,340) rotate(-90)"><use href="#starfish-arm"/></g>
-          <g transform="translate(340,340) rotate(-18)"><use href="#starfish-arm"/></g>
-          <g transform="translate(340,340) rotate(54)"><use href="#starfish-arm"/></g>
-          <g transform="translate(340,340) rotate(126)"><use href="#starfish-arm"/></g>
-          <g transform="translate(340,340) rotate(198)"><use href="#starfish-arm"/></g>
-          <circle cx="340" cy="340" r="62" fill="url(#disc-grad)" stroke="#5c2200" stroke-width="1.2"/>
-          <circle cx="340" cy="340" r="48" fill="none" stroke="#7a3300" stroke-width="1" opacity="0.4"/>
-          <circle cx="340" cy="340" r="34" fill="none" stroke="#7a3300" stroke-width="0.8" opacity="0.3"/>
-          <circle cx="340" cy="340" r="20" fill="url(#center-dot-grad)" stroke="#5c2200" stroke-width="0.8"/>
-          <circle cx="340" cy="340" r="8" fill="#f9c060" opacity="0.45"/>
-        </g>
-        <text font-family="'Lora', Georgia, serif" font-size="17" fill="#c86010" letter-spacing="4.5">
-          <textPath href="#about-ring" startOffset="4%">✦  ABIGAIL'S BAKERY  ✦  SAN ANTONIO, TEXAS  ✦  HANDMADE WITH LOVE</textPath>
-        </text>
-      </svg>
+      <svg width="230" height="230" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lg-arm" cx="28%" cy="18%" r="72%">
+      <stop offset="0%" stop-color="#f5a535"/><stop offset="55%" stop-color="#d4710e"/><stop offset="100%" stop-color="#a34d06"/>
+    </radialGradient>
+    <radialGradient id="lg-shade" cx="70%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#7a3300" stop-opacity="0.5"/><stop offset="100%" stop-color="#7a3300" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg-disc" cx="36%" cy="30%" r="64%">
+      <stop offset="0%" stop-color="#f6b84a"/><stop offset="45%" stop-color="#c86010"/><stop offset="100%" stop-color="#8c3e04"/>
+    </radialGradient>
+    <radialGradient id="lg-dot" cx="28%" cy="26%" r="66%">
+      <stop offset="0%" stop-color="#c97020"/><stop offset="100%" stop-color="#6b2c02"/>
+    </radialGradient>
+    <radialGradient id="lg-cdot" cx="28%" cy="26%" r="66%">
+      <stop offset="0%" stop-color="#f0a030"/><stop offset="100%" stop-color="#6b2c02"/>
+    </radialGradient>
+    <path id="lg-ring" d="M340,340 m-255,0 a255,255 0 1,1 510,0 a255,255 0 1,1 -510,0"/>
+  </defs>
+  <g transform="translate(340,340) rotate(-90)">
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-arm)"/>
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-shade)"/>
+    <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-128" r="13" fill="url(#lg-dot)" stroke="#5c2200" stroke-width="0.8"/>
+    <circle cx="0" cy="-128" r="5.5" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(340,340) rotate(-18)">
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-arm)"/>
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-shade)"/>
+    <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-128" r="13" fill="url(#lg-dot)" stroke="#5c2200" stroke-width="0.8"/>
+    <circle cx="0" cy="-128" r="5.5" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(340,340) rotate(54)">
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-arm)"/>
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-shade)"/>
+    <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-128" r="13" fill="url(#lg-dot)" stroke="#5c2200" stroke-width="0.8"/>
+    <circle cx="0" cy="-128" r="5.5" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(340,340) rotate(126)">
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-arm)"/>
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-shade)"/>
+    <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-128" r="13" fill="url(#lg-dot)" stroke="#5c2200" stroke-width="0.8"/>
+    <circle cx="0" cy="-128" r="5.5" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(340,340) rotate(198)">
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-arm)"/>
+    <path d="M0,-8 C-36,-8 -52,-40 -54,-80 C-55,-118 -44,-158 -30,-188 C-18,-214 -8,-228 0,-232 C8,-228 18,-214 30,-188 C44,-158 55,-118 54,-80 C52,-40 36,-8 0,-8 Z" fill="url(#lg-shade)"/>
+    <path d="M0,-12 C-4,-60 -6,-120 0,-228 C6,-120 4,-60 0,-12 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-128" r="13" fill="url(#lg-dot)" stroke="#5c2200" stroke-width="0.8"/>
+    <circle cx="0" cy="-128" r="5.5" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <circle cx="340" cy="340" r="62" fill="url(#lg-disc)" stroke="#5c2200" stroke-width="1.2"/>
+  <circle cx="340" cy="340" r="48" fill="none" stroke="#7a3300" stroke-width="1" opacity="0.4"/>
+  <circle cx="340" cy="340" r="34" fill="none" stroke="#7a3300" stroke-width="0.8" opacity="0.3"/>
+  <circle cx="340" cy="340" r="20" fill="url(#lg-cdot)" stroke="#5c2200" stroke-width="0.8"/>
+  <circle cx="340" cy="340" r="8" fill="#f9d080" opacity="0.45"/>
+  <text font-family="Lora, Georgia, serif" font-size="17" fill="#c86010" letter-spacing="4.5">
+    <textPath href="#lg-ring" startOffset="4%">✦  ABIGAIL'S BAKERY  ✦  SAN ANTONIO, TEXAS  ✦  HANDMADE WITH LOVE</textPath>
+  </text>
+</svg>
     </div>
     <p class="logo-caption">Est. San Antonio, Texas</p>
   </div>
@@ -444,7 +490,7 @@
       </div>
     </div>
     <div class="menu-card">
-      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&q=80&fit=crop" alt="Babka" loading="lazy"/></div>
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1618551919718-160e8e761b39?w=600&q=80&fit=crop" alt="Chocolate Babka" loading="lazy"/></div>
       <div class="menu-card-body">
         <div class="menu-card-cat">Israeli Specialty</div>
         <div class="menu-card-title">Babka</div>
@@ -511,17 +557,63 @@
   <div class="footer-top">
     <div>
       <svg width="46" height="46" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#soft-shadow)">
-          <g transform="translate(100,100) rotate(-90)"><use href="#starfish-arm"/></g>
-          <g transform="translate(100,100) rotate(-18)"><use href="#starfish-arm"/></g>
-          <g transform="translate(100,100) rotate(54)"><use href="#starfish-arm"/></g>
-          <g transform="translate(100,100) rotate(126)"><use href="#starfish-arm"/></g>
-          <g transform="translate(100,100) rotate(198)"><use href="#starfish-arm"/></g>
-          <circle cx="100" cy="100" r="26" fill="url(#disc-grad)" stroke="#5c2200" stroke-width="1"/>
-          <circle cx="100" cy="100" r="9" fill="url(#center-dot-grad)" stroke="#5c2200" stroke-width="0.7"/>
-          <circle cx="100" cy="100" r="3.5" fill="#f9c060" opacity="0.45"/>
-        </g>
-      </svg>
+  <defs>
+    <radialGradient id="ft-arm" cx="28%" cy="18%" r="72%">
+      <stop offset="0%" stop-color="#f5a535"/><stop offset="55%" stop-color="#d4710e"/><stop offset="100%" stop-color="#a34d06"/>
+    </radialGradient>
+    <radialGradient id="ft-shade" cx="70%" cy="80%" r="60%">
+      <stop offset="0%" stop-color="#7a3300" stop-opacity="0.5"/><stop offset="100%" stop-color="#7a3300" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ft-disc" cx="36%" cy="30%" r="64%">
+      <stop offset="0%" stop-color="#f6b84a"/><stop offset="45%" stop-color="#c86010"/><stop offset="100%" stop-color="#8c3e04"/>
+    </radialGradient>
+    <radialGradient id="ft-dot" cx="28%" cy="26%" r="66%">
+      <stop offset="0%" stop-color="#c97020"/><stop offset="100%" stop-color="#6b2c02"/>
+    </radialGradient>
+    <radialGradient id="ft-cdot" cx="28%" cy="26%" r="66%">
+      <stop offset="0%" stop-color="#f0a030"/><stop offset="100%" stop-color="#6b2c02"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="#fdf4e7" stroke="#e8c88a" stroke-width="1.5"/>
+  <g transform="translate(100,100) rotate(-90)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#ft-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(-18)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#ft-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(54)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#ft-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(126)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#ft-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <g transform="translate(100,100) rotate(198)">
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-arm)"/>
+    <path d="M0,-4 C-18,-4 -26,-20 -27,-40 C-27.5,-59 -22,-79 -15,-94 C-9,-107 -4,-114 0,-116 C4,-114 9,-107 15,-94 C22,-79 27.5,-59 27,-40 C26,-20 18,-4 0,-4 Z" fill="url(#ft-shade)"/>
+    <path d="M0,-6 C-2,-30 -3,-60 0,-114 C3,-60 2,-30 0,-6 Z" fill="#f9d080" opacity="0.35"/>
+    <circle cx="0" cy="-64" r="6.5" fill="url(#ft-dot)" stroke="#5c2200" stroke-width="0.5"/>
+    <circle cx="0" cy="-64" r="2.8" fill="#f9c060" opacity="0.5"/>
+  </g>
+  <circle cx="100" cy="100" r="20" fill="url(#ft-disc)" stroke="#5c2200" stroke-width="1"/>
+  <circle cx="100" cy="100" r="8" fill="url(#ft-cdot)" stroke="#5c2200" stroke-width="0.6"/>
+  <circle cx="100" cy="100" r="3" fill="#f9d080" opacity="0.5"/>
+</svg>
       <div class="fbrand-name">Abigail's Bakery</div>
       <p class="fbrand-desc">Handmade Mexican and artisan baked goods, baked fresh every morning in San Antonio, Texas.</p>
     </div>
