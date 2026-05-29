@@ -124,8 +124,8 @@
     /* MENU */
     .menu-section { background: var(--cream); }
     .menu-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
-    .menu-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .menu-card { background: var(--warm-off); border: 1px solid rgba(90,125,78,0.15); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; max-width: 220px; margin: 0 auto; width: 100%; }
+    .menu-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); gap: 16px; justify-content: center; }
+    .menu-card { background: var(--warm-off); border: 1px solid rgba(90,125,78,0.15); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
     .menu-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59,92,53,0.10); }
     .menu-card-img { height: 120px; overflow: hidden; }
     .menu-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
