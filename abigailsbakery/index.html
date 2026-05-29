@@ -124,16 +124,16 @@
     /* MENU */
     .menu-section { background: var(--cream); }
     .menu-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
-    .menu-cards { display: grid; grid-template-columns: repeat(3, 200px); gap: 20px; justify-content: center; }
-    .menu-card { background: var(--warm-off); border: 1px solid rgba(90,125,78,0.15); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; width: 200px; }
+    .menu-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+    .menu-card { background: var(--warm-off); border: 1px solid rgba(90,125,78,0.15); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
     .menu-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59,92,53,0.10); }
-    .menu-card-img { height: 150px; width: 100%; overflow: hidden; }
+    .menu-card-img { height: 160px; overflow: hidden; }
     .menu-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
     .menu-card:hover .menu-card-img img { transform: scale(1.08); }
-    .menu-card-body { padding: 12px 14px 16px; }
-    .menu-card-cat { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--leaf); margin-bottom: 4px; }
-    .menu-card-title { font-family: 'DM Serif Display', serif; font-size: 0.95rem; color: var(--bark); margin-bottom: 5px; }
-    .menu-card-desc { font-size: 0.75rem; line-height: 1.55; color: var(--mid-bark); }
+    .menu-card-body { padding: 14px 16px 18px; }
+    .menu-card-cat { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--leaf); margin-bottom: 5px; }
+    .menu-card-title { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--bark); margin-bottom: 6px; }
+    .menu-card-desc { font-size: 0.78rem; line-height: 1.6; color: var(--mid-bark); }
     .menu-card.featured-card { background: var(--forest); border-color: var(--forest); }
     .menu-card.featured-card .menu-card-cat { color: var(--pale-sage); }
     .menu-card.featured-card .menu-card-title { color: var(--cream); }
