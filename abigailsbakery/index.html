@@ -537,16 +537,18 @@
       <li><span>✉️</span> lifeslemons.operations@gmail.com</li>
     </ul>
   </div>
-  <form action="https://formspree.io/f/mdajjlpy" method="POST" style="display:contents">
+  <div class="order-form">
     <h3>Request a Custom Order</h3>
-    <div class="frow"><label>Your Name</label><input type="text" placeholder="Jane Doe"/></div>
-    <div class="frow"><label>Phone or Email</label><input type="text" placeholder="000 000 0000"/></div>
+    <form action="https://formspree.io/f/mdajjlpy" method="POST">
+    <div class="frow"><label>Your Name</label><input type="text" name="name" placeholder="Jane Doe"/></div>
+    <div class="frow"><label>Phone or Email</label><input type="text" name="contact" placeholder="000 000 0000"/></div>
     <div class="frow"><label>What are you looking for?</label>
-      <select><option value="">Select a category…</option><option>Pan Dulce</option><option>Sourdough Loaf</option><option>Challah</option><option>Babka</option><option>Chocolate Chip Cookies</option><option>Sugar Cookies</option><option>Tres Leches Cake</option><option>Custom Celebration Cake</option><option>Something Else</option></select>
+      <select name="category"><option value="">Select a category…</option><option>Pan Dulce</option><option>Sourdough Loaf</option><option>Challah</option><option>Babka</option><option>Chocolate Chip Cookies</option><option>Sugar Cookies</option><option>Tres Leches Cake</option><option>Custom Celebration Cake</option><option>Something Else</option></select>
     </div>
-    <div class="frow"><label>Details & Date Needed</label><textarea rows="3" placeholder="Tell Abigail a little about what you need…"></textarea></div>
+    <div class="frow"><label>Details & Date Needed</label><textarea rows="3" name="details" placeholder="Tell Abigail a little about what you need…"></textarea></div>
     <button type="submit" class="btn-submit">Send My Request</button>
-  </form>
+    </form>
+  </div>
   </div>
 </div>
 
