@@ -539,7 +539,7 @@
   </div>
   <div class="order-form">
     <h3>Request a Custom Order</h3>
-    <form action="https://formspree.io/f/mdajjlpy" method="POST">
+    <form id="bakery-order-form" action="https://formspree.io/f/mdajjlpy" method="POST">
     <div class="frow"><label>Your Name</label><input type="text" name="name" placeholder="Jane Doe"/></div>
     <div class="frow"><label>Phone or Email</label><input type="text" name="contact" placeholder="000 000 0000"/></div>
     <div class="frow"><label>What are you looking for?</label>
@@ -548,8 +548,35 @@
     <div class="frow"><label>Details & Date Needed</label><textarea rows="3" name="details" placeholder="Tell Abigail a little about what you need…"></textarea></div>
     <button type="submit" class="btn-submit">Send My Request</button>
     </form>
+    <div id="order-success-msg" style="display:none; text-align:center; padding: 30px 10px;">
+      <div style="font-size: 2.2rem; margin-bottom: 10px;">🎉</div>
+      <div style="font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--cream); margin-bottom: 10px;">Sent!</div>
+      <div style="font-size: 0.95rem; color: rgba(194,213,181,0.9); line-height: 1.7;">We got your request — we'll text or email you when your order is ready for pickup. Thank you for supporting Abigail's Bakery! 🧡</div>
+    </div>
   </div>
   </div>
+
+  <script>
+    document.getElementById('bakery-order-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('order-success-msg').style.display = 'block';
+        } else {
+          alert('Oops! Something went wrong. Please try again or call us at (210) 701-1872.');
+        }
+      }).catch(() => {
+        alert('Oops! Something went wrong. Please try again or call us at (210) 701-1872.');
+      });
+    });
+  </script>
 </div>
 
 <!-- FOOTER -->
